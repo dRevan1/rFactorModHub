@@ -23,9 +23,9 @@ footer {
 
 .home-card {
     max-width: max-content;
-    border-color: #3CBFFF;
+    border-color: #DD2F13;
     &:hover {
-        background-color: #DD2F13;
+        background-color: #3CBFFF;
         .card-img-top {
             opacity: 0.2;
         }
