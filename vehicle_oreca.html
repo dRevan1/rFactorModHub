@@ -35,9 +35,9 @@
 </header>
 
 <div class="container">
-    <div class="row">
+    <div class="row main-content">
         <div class="col">
-            <div class="row justify-content-center">
+            <div class="row justify-content-center mt-3">
                 <div class="col-4">
                     <div class="d-flex flex-column">
                         <button type="button" class="btn gallery-btn" data-bs-toggle="modal"
@@ -86,34 +86,51 @@
 
                 <div class="col-8 align-items-end">
                     <p>
-                        Size: 200 mb
+                        <span class="item-info">Size:</span> 200 mb
                     </p>
                     <p>
-                        Author: Darth Revan
+                        <span class="item-info">Author:</span> Darth Revan
                     </p>
                     <p>
-                        Posted: 17.10.2024
+                        <span class="item-info">Posted:</span> 17.10.2024
                     </p>
                     <p>
-                        Last update: 18.10.2024
+                        <span class="item-info">Last update:</span> 18.10.2024
+                    </p>
+                    <p>
+                        <button type="button" class="btn btn-download">
+                            Download
+                        </button>
                     </p>
                 </div>
             </div>
 
-            <div class="row">
-                <h1>Oreca 07 LMP2</h1>
-                <p class="item description">
-                    The Oreca 07 is a Le Mans Prototype built by French manufacturer Oreca to meet the 2017 FIA and ACO LMP2 regulations.
-                    It made its official race debut in the opening round of the 2017 IMSA WeatherTech SportsCar Championship, the 24 Hours of Daytona,
-                    and its FIA World Endurance Championship debut at the 2017 6 Hours of Silverstone.
-                    The car is the successor to the Oreca 05.
-                    Oreca 07 turned out to be the car of choice for LMP2 teams, finding more buyers every year, who switched to the chassis from the previously purchased ones of other brands.
-                    All 24 LMP2 cars in the 2023 24 Hours of Le Mans were the Oreca 07. Since the 2019 IMSA season, only two LMP2 entries have not been an Oreca 07.
-                </p>
+            <div class="row item-description">
+                <div class="col">
+                    <h1>Oreca 07 LMP2</h1>
+                    <p>
+                        The Oreca 07 is a Le Mans Prototype built by French manufacturer Oreca to meet the 2017 FIA and
+                        ACO LMP2 regulations.
+                        It made its official race debut in the opening round of the 2017 IMSA WeatherTech SportsCar
+                        Championship, the 24 Hours of Daytona,
+                        and its FIA World Endurance Championship debut at the 2017 6 Hours of Silverstone.
+                        The car is the successor to the Oreca 05.
+                        Oreca 07 turned out to be the car of choice for LMP2 teams, finding more buyers every year, who
+                        switched to the chassis from the previously purchased ones of other brands.
+                        All 24 LMP2 cars in the 2023 24 Hours of Le Mans were the Oreca 07. Since the 2019 IMSA season,
+                        only two LMP2 entries have not been an Oreca 07.
+                    </p>
+                </div>
             </div>
 
-            <div class="row">
-                <h1>Comments:</h1>
+            <div class="row item-comments">
+                <div class="col">
+                    <h1>Comments:</h1>
+
+                    <div class="form-group textarea-comment mt-4">
+                        <textarea class="form-control" rows="5" placeholder="Write a comment..."></textarea>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

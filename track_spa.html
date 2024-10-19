@@ -37,9 +37,9 @@
 </header>
 
 <div class="container">
-  <div class="row">
+  <div class="row main-content">
     <div class="col">
-      <div class="row justify-content-center">
+      <div class="row justify-content-center mt-3">
         <div class="col-4">
           <div class="d-flex flex-column">
             <button type="button" class="btn gallery-btn" data-bs-toggle="modal"
@@ -88,34 +88,52 @@
 
         <div class="col-8 align-items-end">
           <p>
-            Size: 500 mb
+            <span class="item-info">Size:</span> 500 mb
           </p>
           <p>
-            Author: Darth Malak
+            <span class="item-info">Author:</span> Darth Malak
           </p>
           <p>
-            Posted: 17.10.2024
+            <span class="item-info">Posted:</span> 17.10.2024
           </p>
           <p>
-            Last update: 18.10.2024
+            <span class="item-info">Last update:</span> 18.10.2024
+          </p>
+          <p>
+            <button type="button" class="btn btn-download">
+              Download
+            </button>
           </p>
         </div>
       </div>
 
-      <div class="row">
-        <h1>Circuit de Spa-Francorchamps</h1>
-        <p class="item description">
-          The Circuit de Spa-Francorchamps, informally referred to as Spa, is a 7.004 km (4.352 mi) motor-racing circuit located in Francorchamps, Stavelot, Wallonia, Belgium,
-          about 8 km (5.0 mi) southeast of Spa. It is the current venue of the Formula One Belgian Grand Prix, hosting its first Grand Prix in 1925, and has held a Grand Prix
-          every year since 1985 except 2003 and 2006. Spa also hosts several other international events including the 24 Hours of Spa, the World Endurance Championship 6 Hours
-          of Spa-Francorchamps. It is also the host of the Uniroyal Fun Cup 25 Hours of Spa, one of the longest motor races in the world. The circuit has undergone several
-          redesigns through its history, most extensively in 1979 when the track was modified and shortened from a 14.100 km (8.761 mi) circuit using public roads
-          to a 6.947 km (4.317 mi) permanent circuit due to safety concerns with the old circuit.
-        </p>
+      <div class="row item-description">
+        <div class="col">
+          <h1>Circuit de Spa-Francorchamps</h1>
+          <p>
+            The Circuit de Spa-Francorchamps, informally referred to as Spa, is a 7.004 km (4.352 mi) motor-racing
+            circuit located in Francorchamps, Stavelot, Wallonia, Belgium,
+            about 8 km (5.0 mi) southeast of Spa. It is the current venue of the Formula One Belgian Grand Prix, hosting
+            its first Grand Prix in 1925, and has held a Grand Prix
+            every year since 1985 except 2003 and 2006. Spa also hosts several other international events including the
+            24 Hours of Spa, the World Endurance Championship 6 Hours
+            of Spa-Francorchamps. It is also the host of the Uniroyal Fun Cup 25 Hours of Spa, one of the longest motor
+            races in the world. The circuit has undergone several
+            redesigns through its history, most extensively in 1979 when the track was modified and shortened from a
+            14.100 km (8.761 mi) circuit using public roads
+            to a 6.947 km (4.317 mi) permanent circuit due to safety concerns with the old circuit.
+          </p>
+        </div>
       </div>
 
-      <div class="row">
-        <h1>Comments:</h1>
+      <div class="row item-comments">
+        <div class="col">
+          <h1>Comments:</h1>
+
+          <div class="form-group textarea-comment mt-4">
+            <textarea class="form-control" rows="5" placeholder="Write a comment..."></textarea>
+          </div>
+        </div>
       </div>
     </div>
   </div>

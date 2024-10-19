@@ -36,9 +36,9 @@
 </header>
 
 <div class="container">
-  <div class="row">
+  <div class="row main-content">
     <div class="col">
-      <div class="row justify-content-center">
+      <div class="row justify-content-center mt-3">
         <div class="col-4">
           <div class="d-flex flex-column">
             <button type="button" class="btn gallery-btn" data-bs-toggle="modal"
@@ -87,32 +87,48 @@
 
         <div class="col-8 align-items-end">
           <p>
-            Size: 700 mb
+            <span class="item-info">Size:</span> 700 mb
           </p>
           <p>
-            Author: Gordon Freeman
+            <span class="item-info">Author:</span> Gordon Freeman
           </p>
           <p>
-            Posted: 17.10.2024
+            <span class="item-info">Posted:</span> 17.10.2024
           </p>
           <p>
-            Last update: 18.10.2024
+            <span class="item-info">Last update:</span> 18.10.2024
+          </p>
+          <p>
+            <button type="button" class="btn btn-download">
+              Download
+            </button>
           </p>
         </div>
       </div>
 
-      <div class="row">
-        <h1>Silverstone Circuit</h1>
-        <p class="item description">
-          Silverstone Circuit is a motor racing circuit in England, near the Northamptonshire villages of Silverstone and Whittlebury. It is the home of the British Grand Prix,
-          which it first hosted as the 1948 British Grand Prix. The 1950 British Grand Prix at Silverstone was the first race in the newly created World Championship of Drivers.
-          The race rotated between Silverstone, Aintree and Brands Hatch from 1955 to 1986, but settled permanently at the Silverstone track in 1987. The circuit also hosts the
-          British round of the MotoGP series.
-        </p>
+      <div class="row item-description">
+        <div class="col">
+          <h1>Silverstone Circuit</h1>
+          <p>
+            Silverstone Circuit is a motor racing circuit in England, near the Northamptonshire villages of Silverstone
+            and Whittlebury. It is the home of the British Grand Prix,
+            which it first hosted as the 1948 British Grand Prix. The 1950 British Grand Prix at Silverstone was the
+            first race in the newly created World Championship of Drivers.
+            The race rotated between Silverstone, Aintree and Brands Hatch from 1955 to 1986, but settled permanently at
+            the Silverstone track in 1987. The circuit also hosts the
+            British round of the MotoGP series.
+          </p>
+        </div>
       </div>
 
-      <div class="row">
-        <h1>Comments:</h1>
+      <div class="row item-comments">
+        <div class="col">
+          <h1>Comments:</h1>
+
+          <div class="form-group textarea-comment mt-4">
+            <textarea class="form-control" rows="5" placeholder="Write a comment..."></textarea>
+          </div>
+        </div>
       </div>
     </div>
   </div>

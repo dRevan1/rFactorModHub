@@ -36,9 +36,9 @@
 </header>
 
 <div class="container">
-  <div class="row">
+  <div class="row main-content">
     <div class="col">
-      <div class="row justify-content-center">
+      <div class="row justify-content-center mt-3">
         <div class="col-4">
           <div class="d-flex flex-column">
             <button type="button" class="btn gallery-btn" data-bs-toggle="modal"
@@ -87,35 +87,54 @@
 
         <div class="col-8 align-items-end">
           <p>
-            Size: 250 mb
+            <span class="item-info">Size:</span> 250 mb
           </p>
           <p>
-            Author: Darth Nihilus
+            <span class="item-info">Author:</span> Darth Nihilus
           </p>
           <p>
-            Posted: 17.10.2024
+            <span class="item-info">Posted:</span> 17.10.2024
           </p>
           <p>
-            Last update: 18.10.2024
+            <span class="item-info">Last update:</span> 18.10.2024
+          </p>
+          <p>
+            <button type="button" class="btn btn-download">
+              Download
+            </button>
           </p>
         </div>
       </div>
 
-      <div class="row">
-        <h1>BMW M4 GT3</h1>
-        <p class="item description">
-          The BMW M4 GT3 is a racecar version of the G82 BMW M4, homologated under the FIA Group GT3 category, which also enables entry to SRO, IMSA and ADAC competition.
-          It is intended to be a successor to the BMW M6 GT3, racing from the 2022 season. The M4 GT3 will use a race-prepped variant of the inline-six from the road car.
-          Features changed from the road-going version off the car include widened fenders and bodywork, more angular styling for the hood,
-          exhaust exits just after the passenger side front wheel on the right side of the car, inlets on the sides of the wider rear fenders and a gooseneck-mounted spoiler
-          and rear diffuser manage the airflow. Additionally, the steering wheel can be used in racing simulators without modifications. Deliveries started in late 2021.
-          An Evo version of the M4 GT3 was announced at the 2024 Nürburgring 24 Hours, with the car featuring new side mirrors, new head- and taillights and larger air inlets,
-          while also being more reliable and easier to drive.
-        </p>
+      <div class="row item-description">
+        <div class="col">
+          <h1>BMW M4 GT3</h1>
+          <p>
+            The BMW M4 GT3 is a racecar version of the G82 BMW M4, homologated under the FIA Group GT3 category, which
+            also enables entry to SRO, IMSA and ADAC competition.
+            It is intended to be a successor to the BMW M6 GT3, racing from the 2022 season. The M4 GT3 will use a
+            race-prepped variant of the inline-six from the road car.
+            Features changed from the road-going version off the car include widened fenders and bodywork, more angular
+            styling for the hood,
+            exhaust exits just after the passenger side front wheel on the right side of the car, inlets on the sides of
+            the wider rear fenders and a gooseneck-mounted spoiler
+            and rear diffuser manage the airflow. Additionally, the steering wheel can be used in racing simulators
+            without modifications. Deliveries started in late 2021.
+            An Evo version of the M4 GT3 was announced at the 2024 Nürburgring 24 Hours, with the car featuring new side
+            mirrors, new head- and taillights and larger air inlets,
+            while also being more reliable and easier to drive.
+          </p>
+        </div>
       </div>
 
-      <div class="row">
-        <h1>Comments:</h1>
+      <div class="row item-comments">
+        <div class="col">
+          <h1>Comments:</h1>
+
+          <div class="form-group textarea-comment mt-4">
+            <textarea class="form-control" rows="5" placeholder="Write a comment..."></textarea>
+          </div>
+        </div>
       </div>
     </div>
   </div>
