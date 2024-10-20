@@ -14,39 +14,58 @@
 <body>
 
 <header>
+    <!-- Základná štruktúra navbaru zo stránky Bootstrap (hlavne atribúty pre navbar-toggler) https://getbootstrap.com/docs/5.0/components/navbar/? -->
     <nav class="navbar navbar-expand-sm">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="index.html">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="tracks.html">Tracks</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="vehicles.html">Vehicles</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="setups.html">Setups</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="other.html">Other</a>
-            </li>
+        <button class="navbar-toggler ms-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapsed" aria-controls="navbarCollapsed" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-        </ul>
+        <div class="collapse navbar-collapse" id="navbarCollapsed">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="tracks.html">Tracks</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="vehicles.html">Vehicles</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="setups.html">Setups</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="other.html">Other</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="login.html">Log in</a>
+                </li>
+            </ul>
+        </div>
     </nav>
 </header>
 
-<form>
-    <div class="form-group log-in">
-        <label for="email">Email:</label>
-        <input type="text" class="form-control" id="email" placeholder="Enter email">
+<div class="container">
+    <div class="row main-content">
+        <div class="col-2"></div>
 
-        <label for="password">Password:</label>
-        <input type="text" class="form-control" id="password" placeholder="Enter password">
+        <div class="col-xs-10 col-sm-8">
+            <form>
+                <div class="form-group log-in">
+                    <label for="email">Email:</label>
+                    <input type="text" class="form-control mt-3 mb-3" id="email" placeholder="Enter email">
 
-        <button type="submit" class="btn log-in-btn">Log in</button>
+                    <label for="password">Password:</label>
+                    <input type="text" class="form-control mt-3" id="password" placeholder="Enter password">
+
+                    <button type="submit" class="btn btn-search mt-3">Log in</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="col-2"></div>
     </div>
-</form>
+</div>
 
 <footer></footer>
 

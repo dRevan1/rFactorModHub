@@ -14,40 +14,49 @@
 <body>
 
 <header>
+  <!-- Základná štruktúra navbaru zo stránky Bootstrap (hlavne atribúty pre navbar-toggler) https://getbootstrap.com/docs/5.0/components/navbar/? -->
   <nav class="navbar navbar-expand-sm">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="index.html">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="tracks.html">Tracks</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="vehicles.html">Vehicles</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="setups.html">Setups</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="other.html">Other</a>
-      </li>
+    <button class="navbar-toggler ms-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapsed" aria-controls="navbarCollapsed" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-    </ul>
+    <div class="collapse navbar-collapse" id="navbarCollapsed">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="tracks.html">Tracks</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="vehicles.html">Vehicles</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="setups.html">Setups</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="other.html">Other</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="login.html">Log in</a>
+        </li>
+      </ul>
+    </div>
   </nav>
 </header>
 
 <div class="container">
   <div class="row main-content">
     <div class="col">
-      <div class="row justify-content-center mt-3">
-        <div class="col-4">
-          <div class="d-flex flex-column">
+      <div class="row mt-3">
+        <div class="col-xs-12 col-md-5 mt-1">
+          <div class="d-flex flex-column gap-2">
             <button type="button" class="btn gallery-btn" data-bs-toggle="modal"
                     data-bs-target="#spaPic1">
-              <img src="/images/spa_1.jpg" class="img-rounded" alt="spa picture 1">
+              <img src="/images/spa_1.jpg" alt="spa picture 1">
             </button>
             <div id="spaPic1" class="modal fade" role="dialog">
-              <div class="modal-dialog modal-dialog-scrollable">
+              <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-body">
                     <img src="/images/spa_1.jpg" class="modal-img" alt="spa picture 1">
@@ -58,10 +67,10 @@
 
             <button type="button" class="btn gallery-btn" data-bs-toggle="modal"
                     data-bs-target="#spaPic2">
-              <img src="/images/spa_2.jpg" class="img-rounded" alt="spa picture 2">
+              <img src="/images/spa_2.jpg" alt="spa picture 2">
             </button>
             <div id="spaPic2" class="modal fade" role="dialog">
-              <div class="modal-dialog modal-dialog-scrollable">
+              <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-body">
                     <img src="/images/spa_2.jpg" class="modal-img" alt="spa picture 2">
@@ -72,10 +81,10 @@
 
             <button type="button" class="btn gallery-btn" data-bs-toggle="modal"
                     data-bs-target="#spaPic3">
-              <img src="/images/spa_3.jpg" class="img-rounded" alt="spa picture 3">
+              <img src="/images/spa_3.jpg" alt="spa picture 3">
             </button>
             <div id="spaPic3" class="modal fade" role="dialog">
-              <div class="modal-dialog modal-dialog-scrollable">
+              <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-body">
                     <img src="/images/spa_3.jpg" class="modal-img" alt="spa picture 3">
@@ -86,7 +95,7 @@
           </div>
         </div>
 
-        <div class="col-8 align-items-end">
+        <div class="col-xs-12 col-md-7 mt-2">
           <p>
             <span class="item-info">Size:</span> 500 mb
           </p>
@@ -131,7 +140,7 @@
           <h1>Comments:</h1>
 
           <div class="form-group textarea-comment mt-4">
-            <textarea class="form-control" rows="5" placeholder="Write a comment..."></textarea>
+            <textarea class="form-control" rows="5" placeholder="Leave a comment..."></textarea>
           </div>
         </div>
       </div>

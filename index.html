@@ -12,31 +12,40 @@
 <body>
 
 <header>
+    <!-- Základná štruktúra navbaru zo stránky Bootstrap (hlavne atribúty pre navbar-toggler) https://getbootstrap.com/docs/5.0/components/navbar/? -->
     <nav class="navbar navbar-expand-sm">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="index.html">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="tracks.html">Tracks</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="vehicles.html">Vehicles</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="setups.html">Setups</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="other.html">Other</a>
-            </li>
+        <button class="navbar-toggler ms-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapsed" aria-controls="navbarCollapsed" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-        </ul>
+        <div class="collapse navbar-collapse" id="navbarCollapsed">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="tracks.html">Tracks</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="vehicles.html">Vehicles</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="setups.html">Setups</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="other.html">Other</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="login.html">Log in</a>
+                </li>
+            </ul>
+        </div>
     </nav>
 </header>
 
 <div class="container">
     <div class="row main-content">
-        <div class="row justify-content-center">
+        <div class="row">
             <div class="col">
                 <h1>Welcome to rFactor2 Mod Hub!</h1>
                 <a>Download mods, including tracks, vehicles and other mods, like UI.
@@ -45,8 +54,8 @@
             </div>
         </div>
 
-        <div class="row mt-4">
-            <div class="col">
+        <div class="row">
+            <div class="col-xs-12 col-md-6 mt-4">
                 <div class="card home-card">
                     <a class="card-block stretched-link text-decoration-none" href="tracks.html">
                         <img class="card-img-top" src="/images/home_link_tracks.jpg" alt="Tracks link picture">
@@ -56,7 +65,7 @@
                     </a>
                 </div>
             </div>
-            <div class="col">
+            <div class="col-xs-12 col-md-6 mt-4">
                 <div class="card home-card">
                     <a class="card-block stretched-link text-decoration-none" href="vehicles.html">
                         <img class="card-img-top" src="/images/home_link_vehicles.jpg" alt="Vehicles link picture">
@@ -68,8 +77,8 @@
             </div>
         </div>
 
-        <div class="row mt-5">
-            <div class="col">
+        <div class="row">
+            <div class="col-xs-12 col-md-6 mt-4">
                 <div class="card home-card">
                     <a class="card-block stretched-link text-decoration-none" href="other.html">
                         <img class="card-img-top" src="/images/home_link_other.jpg" alt="Other link picture">
@@ -79,7 +88,7 @@
                     </a>
                 </div>
             </div>
-            <div class="col">
+            <div class="col-xs-12 col-md-6 mt-4">
                 <div class="card home-card">
                     <a class="card-block stretched-link text-decoration-none" href="setups.html">
                         <img class="card-img-top" src="/images/home_link_setups.jpg" alt="Setups link picture">
