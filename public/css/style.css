@@ -1,3 +1,10 @@
+:root {
+    --rFactor-blue: #3CBFFF;
+    --rFactor-orange: #ED3F13;
+}
+
+
+
 header {
     text-align: center;
 }
@@ -7,7 +14,7 @@ body {
 }
 
 .navbar {
-    background-color: #3CBFFF;
+    background-color: var(--rFactor-blue);
 }
 
 .navbar-toggler {
@@ -28,28 +35,28 @@ body {
 .left-content {
     margin-top: 8vh;
     margin-left: 3vh;
-    border: #ED3F13 2px solid;
+    border: var(--rFactor-orange) 2px solid;
     border-radius: 8px;
 }
 
 .btn-search {
-    background-color: #3CBFFF;
+    background-color: var(--rFactor-blue);
     color: white;
 }
 .btn-search:hover {
-    border-color: #3CBFFF;
+    border-color: var(--rFactor-blue);
     background-color: white;
     color: black;
 }
 
 .btn-filters {
-    background-color: #ED3F13;
+    background-color: var(--rFactor-orange);
     font-size: 2vh;
     font-weight: bold;
     margin-bottom: 2vh;
 }
 .btn-filters:hover {
-    border-color: #ED3F13;
+    border-color: var(--rFactor-orange);
     background-color: white;
 }
 
@@ -59,7 +66,7 @@ body {
     }
 }
 
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 768px) {
     button.btn-filters {
         display: none;
     }
@@ -87,13 +94,13 @@ footer {
 .home-card {
     max-width: max-content;
     border: none;
-    background-color: #ED3F13;
+    background-color: var(--rFactor-orange);
     font-family: Impact, Verdana, sans-serif;
     font-style: italic;
 
 }
 .home-card:hover {
-    background-color: #3CBFFF;
+    background-color: var(--rFactor-blue);
 }
 .home-card:hover .card-img-top {
     opacity: 0.2;
@@ -105,7 +112,7 @@ footer {
 }
 
 .gallery-btn {
-    background-color: #ED3F13;
+    background-color: var(--rFactor-orange);
 }
 .gallery-btn:hover {
     opacity: 0.6;
@@ -136,13 +143,13 @@ footer {
 }
 
 .btn-download {
-    background-color: #3CBFFF;
+    background-color: var(--rFactor-blue);
     color: white;
     font-size: 2vh;
     font-weight: bold;
 }
 .btn-download:hover {
-    border-color: #3CBFFF;
+    border-color: var(--rFactor-blue);
     background-color: white;
 }
 

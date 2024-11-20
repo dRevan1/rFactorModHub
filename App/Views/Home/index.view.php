@@ -1,30 +1,68 @@
-<div class="container-fluid">
-    <div class="row">
-        <div class="col mt-5">
-            <div class="text-center">
-                <h2>Vaííčko MVC FW</h2>
-                <img src="public/images/vaiicko_logo.png">
-                <p>
-                    Gratulujeme vám, úspešne sa vám podarilo nainštalovať a spustiť framework
-                    <strong>Vaííčko</strong> <?= \App\Config\Configuration::FW_VERSION ?>!<br>
-                    Dúfame, že sa Vám pomocou tohto frameworku vytvoríte nejakú skvelú aplikáciu.<br>
-                </p>
-                <p>
-                    Tento jednoduchý framework bol vytvorený pre lepšie pochopenie architektúry MVC.<br>
-                    Je určený pre študentov predmetu <em>vývoj aplikácií pre internet a intranet</em>, ale nielen im.
-                </p>
+<?php
+
+/** @var Array $data */
+
+/** @var \App\Core\LinkGenerator $link */
+?>
+
+<head>
+    <title>Home</title>
+</head>
+
+<div class="container">
+    <div class="row main-content">
+        <div class="row">
+            <div class="col">
+                <h1>Welcome to rFactor2 Mod Hub!</h1>
+                <a>Download mods, including tracks, vehicles and other mods, like UI.
+                    Maybe you're looking for a specific car setup? You can try setups from our community members.
+                    If you're looking to share your mods, feel free to upload here.</a>
             </div>
         </div>
-    </div>
-    <div class="row mt-3">
-        <div class="col text-center">
-            <h4>Autori</h4>
-            <div>
-                <a href="mailto:Patrik.Hrkut@fri.uniza.sk">doc. Ing. Patrik Hrkút, PhD.</a><br>
-                <a href="mailto:Michal.Duracik@fri.uniza.sk">Ing. Michal Ďuračík, PhD.</a><br>
-                <a href="mailto:Matej.Mesko@fri.uniza.sk">Ing. Matej Meško, PhD.</a><br><br>
-                &copy; 2020-<?= date('Y') ?> Žilinská univerzita v Žiline, Fakulta riadenia a informatiky, Katedra
-                softvérových technológií
+
+        <div class="row">
+            <div class="col-xs-12 col-md-6 mt-4">
+                <div class="card home-card">
+                    <a class="card-block stretched-link text-decoration-none" href="tracks.html">
+                        <img class="card-img-top" src="/public/images/home_link_tracks.jpg" alt="Tracks link picture">
+                        <div class="card-body">
+                            <h1 class="card-title">Tracks</h1>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-6 mt-4">
+                <div class="card home-card">
+                    <a class="card-block stretched-link text-decoration-none" href="vehicles.html">
+                        <img class="card-img-top" src="/public/images/home_link_vehicles.jpg" alt="Vehicles link picture">
+                        <div class="card-body">
+                            <h1 class="card-title">Vehicles</h1>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 col-md-6 mt-4">
+                <div class="card home-card">
+                    <a class="card-block stretched-link text-decoration-none" href="other.html">
+                        <img class="card-img-top" src="/public/images/home_link_other.jpg" alt="Other link picture">
+                        <div class="card-body">
+                            <h1 class="card-title">Other</h1>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-6 mt-4">
+                <div class="card home-card">
+                    <a class="card-block stretched-link text-decoration-none" href="setups.html">
+                        <img class="card-img-top" src="/public/images/home_link_setups.jpg" alt="Setups link picture">
+                        <div class="card-body">
+                            <h1 class="card-title">Setups</h1>
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
