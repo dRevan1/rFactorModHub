@@ -1,13 +1,17 @@
 <?php
 
 /** @var Array $data */
-
+/** @var \App\Core\IAuthenticator $auth */
 /** @var \App\Core\LinkGenerator $link */
 ?>
 
 <head>
     <title>Tracks</title>
 </head>
+
+<script>
+    document.getElementById("tracks-nav").classList.add("active");
+</script>
 
 <div class="container">
     <div class="row main-content">
@@ -29,7 +33,7 @@
         <div class="row">
             <div class="col-xs-12 col-md-6 mt-4">
                 <div class="card home-card">
-                    <a class="card-block stretched-link text-decoration-none" href="track_silverstone.html">
+                    <a class="card-block stretched-link text-decoration-none" href="<?= $link->url("mod.mod")?>">
                         <img class="card-img-top" src="/public/images/tracks_silverstone.jpg" alt="Tracks silverstone link picture">
                         <div class="card-body">
                             <h1 class="card-title">Silverstone Circuit</h1>
@@ -53,7 +57,7 @@
         <div class="row">
             <div class="col-xs-12 col-md-6 mt-3">
                 <div class="card home-card">
-                    <a class="card-block stretched-link text-decoration-none" href="track_silverstone.html">
+                    <a class="card-block stretched-link text-decoration-none" href="<?= $link->url("mod.mod")?>">
                         <img class="card-img-top" src="/public/images/tracks_silverstone.jpg" alt="Tracks silverstone link picture">
                         <div class="card-body">
                             <h1 class="card-title">Silverstone Circuit</h1>
@@ -77,7 +81,7 @@
         <div class="row">
             <div class="col-xs-12 col-md-6 mt-3">
                 <div class="card home-card">
-                    <a class="card-block stretched-link text-decoration-none" href="track_silverstone.html">
+                    <a class="card-block stretched-link text-decoration-none" href="<?= $link->url("mod.mod")?>">
                         <img class="card-img-top" src="/public/images/tracks_silverstone.jpg" alt="Tracks silverstone link picture">
                         <div class="card-body">
                             <h1 class="card-title">Silverstone Circuit</h1>

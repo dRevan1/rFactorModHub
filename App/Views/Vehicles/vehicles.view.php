@@ -1,13 +1,17 @@
 <?php
 
 /** @var Array $data */
-
+/** @var \App\Core\IAuthenticator $auth */
 /** @var \App\Core\LinkGenerator $link */
 ?>
 
 <head>
     <title>Vehicles</title>
 </head>
+
+<script>
+    document.getElementById("vehicles-nav").classList.add("active");
+</script>
 
 <div class="container-fluid">
     <div class="row main-content">

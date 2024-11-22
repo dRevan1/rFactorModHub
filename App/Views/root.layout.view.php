@@ -26,22 +26,22 @@
         <div class="collapse navbar-collapse" id="navbarCollapsed">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" href="<?= $link->url("home.index")?>">Home</a>
+                    <a class="nav-link" id="home-nav" href="<?= $link->url("home.index")?>">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= $link->url("tracks.tracks")?>">Tracks</a>
+                    <a class="nav-link" id="tracks-nav" href="<?= $link->url("tracks.tracks")?>">Tracks</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= $link->url("vehicles.vehicles")?>">Vehicles</a>
+                    <a class="nav-link" id="vehicles-nav" href="<?= $link->url("vehicles.vehicles")?>">Vehicles</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= $link->url("setups.setups")?>">Setups</a>
+                    <a class="nav-link" id="setups-nav" href="<?= $link->url("setups.setups")?>">Setups</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= $link->url("other.other")?>">Other</a>
+                    <a class="nav-link" id="other-nav" href="<?= $link->url("other.other")?>">Other</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= $link->url("auth.index")?>">Log in</a>
+                    <a class="nav-link" id="auth-nav" href="<?= $link->url("auth.index")?>">Log in</a>
                 </li>
             </ul>
         </div>

@@ -1,13 +1,17 @@
 <?php
 
 /** @var Array $data */
-
+/** @var \App\Core\IAuthenticator $auth */
 /** @var \App\Core\LinkGenerator $link */
 ?>
 
 <head>
     <title>Home</title>
 </head>
+
+<script>
+    document.getElementById("home-nav").classList.add("active");
+</script>
 
 <div class="container">
     <div class="row main-content">

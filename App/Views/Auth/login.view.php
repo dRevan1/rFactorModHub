@@ -8,25 +8,20 @@ $layout = 'auth';
 <div class="container">
     <div class="row">
         <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-            <div class="card card-signin my-5">
+            <div class="card login-card my-5 p-4">
                 <div class="card-body">
-                    <h5 class="card-title text-center">Prihlásenie</h5>
-                    <div class="text-center text-danger mb-3">
-                        <?= @$data['message'] ?>
-                    </div>
-                    <form class="form-signin" method="post" action="<?= $link->url("login") ?>">
-                        <div class="form-label-group mb-3">
-                            <input name="login" type="text" id="login" class="form-control" placeholder="Login"
+                    <h1 class="card-title text-center">Log in</h1>
+                    <form method="post" action="<?= $link->url("login") ?>">
+                        <div class="form-group">
+                            <label for="username" class="login-label fw-bold">Username:</label>
+                            <input type="text" class="form-control mt-3 mb-3" id="username" placeholder="Enter username"
                                    required autofocus>
-                        </div>
 
-                        <div class="form-label-group mb-3">
-                            <input name="password" type="password" id="password" class="form-control"
-                                   placeholder="Password" required>
-                        </div>
-                        <div class="text-center">
-                            <button class="btn btn-primary" type="submit" name="submit">Prihlásiť
-                            </button>
+                            <label for="password" class="login-label fw-bold">Password:</label>
+                            <input type="text" class="form-control mt-3" id="password" placeholder="Enter password"
+                                   required>
+
+                            <button type="submit" class="btn btn-search mt-3">Log in</button>
                         </div>
                     </form>
                 </div>
