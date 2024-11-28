@@ -1,28 +1,15 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Http\Controllers;
 
-use App\Core\AControllerBase;
-use App\Core\Responses\Response;
+use App\Http\Controllers\Controller;
+use Illuminate\View\View;
 
-class TracksController extends AControllerBase
+class TracksController extends Controller
 {
-    public function index(): Response
+   
+    public function tracks(): View
     {
-    }
-
-    /**
-     * Authorize controller actions
-     * @param $action
-     * @return bool
-     */
-    public function authorize($action)
-    {
-        return true;
-    }
-
-    public function tracks(): Response
-    {
-        return $this->html();
+        return view("tracks.tracks");
     }
 }
