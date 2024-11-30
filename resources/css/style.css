@@ -49,6 +49,16 @@ body {
     color: black;
 }
 
+.btn-create {
+    background-color: var(--rFactor-orange);
+    color: white;
+}
+.btn-create:hover {
+    border-color: var(--rFactor-orange);
+    color: black;
+    background-color: white;
+}
+
 .btn-filters {
     background-color: var(--rFactor-orange);
     font-size: 2vh;

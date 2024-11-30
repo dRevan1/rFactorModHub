@@ -35,7 +35,7 @@
                     <a class="nav-link" id="other-nav" href="{{route('other')}}">Other</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="auth-nav" href="{{route('loginTest')}}">Log in</a>
+                    <a class="nav-link" id="auth-nav" href="{{route('login')}}">Log in</a>
                 </li>
             </ul>
         </div>
