@@ -7,6 +7,7 @@
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     @vite(['resources/css/style.css'])
 </head>
 <body>
@@ -35,7 +36,15 @@
                     <a class="nav-link" id="other-nav" href="{{route('other')}}">Other</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="auth-nav" href="{{route('login')}}">Log in</a>
+                    @auth
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <a class="nav-link" href="{{route('logout')}}" onclick="event.preventDefault();
+                        this.closest('form').submit();">Log out</a>
+                    </form>
+                    @else
+                        <a class="nav-link" id="auth-nav" href="{{route('login')}}">Log in</a>
+                    @endauth
                 </li>
             </ul>
         </div>

@@ -24,18 +24,6 @@ Route::get("/other", function () {
     return view('other.other');
 })->name('other');
 
-Route::get("/login", function () {
-    return view('auth.login');
-})->name('login');
-
-Route::get("/register", function () {
-    return view('auth.register');
-})->name('register');
-
-
-Route::middleware(['auth', 'verified'])->group(function () {
-    Route::resource('note', NoteController::class);
-});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
