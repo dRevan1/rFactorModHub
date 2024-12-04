@@ -63,9 +63,15 @@
                         </div>
                     </div>
     
-                    <div class="col mt-3">
+                    <div class="col-md-1 mt-3">
                         <button type="button" class="btn btn-search">Submit</button>
                     </div>
+
+                    @auth
+                    <div class="col-md-1 mt-3">
+                        <button type="button" class="btn btn-create">Create</button>
+                    </div>
+                    @endauth
                 </div>
     
                 <button type="button" class="btn btn-filters mt-3">

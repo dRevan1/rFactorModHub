@@ -1,20 +1,12 @@
 <?php
 
-use App\Http\Controllers\NoteController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TracksController;
 use Illuminate\Support\Facades\Route;
 
 Route::get("/", function () {
     return view('home.index');
 });
-
-Route::get("/tracks", function () {
-    return view('tracks.tracks');
-})->name('tracks');
-
-Route::get("/vehicles", function () {
-    return view('vehicles.vehicles');
-})->name('vehicles');
 
 Route::get("/setups", function () {
     return view('setups.setups');
@@ -23,7 +15,6 @@ Route::get("/setups", function () {
 Route::get("/other", function () {
     return view('other.other');
 })->name('other');
-
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

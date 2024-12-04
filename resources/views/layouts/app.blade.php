@@ -24,10 +24,10 @@
                     <a class="nav-link" id="home-nav" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="tracks-nav" href="{{ route('tracks') }}">Tracks</a>
+                    <a class="nav-link" id="tracks-nav" href="{{ route('track.index') }}">Tracks</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="vehicles-nav" href="{{route('vehicles')}}">Vehicles</a>
+                    <a class="nav-link" id="vehicles-nav" href="{{route('vehicle.index')}}">Vehicles</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="setups-nav" href="{{route('setups')}}">Setups</a>

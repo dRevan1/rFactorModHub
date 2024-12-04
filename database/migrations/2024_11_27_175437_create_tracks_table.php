@@ -13,13 +13,14 @@ return new class extends Migration
     {
         Schema::create('tracks', function (Blueprint $table) {
             $table->foreign('login')->references('name')->on('users');
-            $table->string('name', length:50)->primary();
+            $table->string('name', length:50);
             $table->date('creation_date')->default(now()->format('d-m-Y'));
             $table->date('update_date');
             $table->string('description')->nullable();
             $table->integer('downloads')->unsigned()->default(0);
             $table->integer('likes')->unsigned()->default(0);
             $table->timestamps();
+            $table->primary(['login', 'name']);
         });
     }
 

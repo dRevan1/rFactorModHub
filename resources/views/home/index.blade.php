@@ -21,7 +21,7 @@
             <div class="row">
                 <div class="col-xs-12 col-md-6 mt-4">
                     <div class="card home-card">
-                        <a class="card-block stretched-link text-decoration-none" href="{{ route('tracks') }}">
+                        <a class="card-block stretched-link text-decoration-none" href="{{ route('track.index') }}">
                             <img class="card-img-top" src="/images/home_link_tracks.jpg" alt="Tracks link picture">
                             <div class="card-body">
                                 <h1 class="card-title">Tracks</h1>
@@ -31,7 +31,7 @@
                 </div>
                 <div class="col-xs-12 col-md-6 mt-4">
                     <div class="card home-card">
-                        <a class="card-block stretched-link text-decoration-none" href="{{route('vehicles')}}">
+                        <a class="card-block stretched-link text-decoration-none" href="{{route('vehicle.index')}}">
                             <img class="card-img-top" src="/images/home_link_vehicles.jpg" alt="Vehicles link picture">
                             <div class="card-body">
                                 <h1 class="card-title">Vehicles</h1>

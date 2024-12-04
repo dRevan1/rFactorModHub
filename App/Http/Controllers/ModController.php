@@ -1,47 +1,49 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Http\Controllers;
 
-use App\Core\AControllerBase;
-use App\Core\Responses\Response;
+use App\Http\Controllers\Controller;
+use App\Models\Mod;
+use Illuminate\View\View;
 
-class ModController extends AControllerBase
+class ModController extends Controller
 {
 
-    /**
-     * Authorize controller actions
-     * @param $action
-     * @return bool
-     */
-    public function authorize($action)
+
+    public function index($table) 
     {
-        return true;
+        $mod = new Mod();
+        $mod->setTable($table);
+        return Mod::all();
+
     }
 
-    public function index(): Response
+    public function create()
     {
+        return view("mod.create");
     }
 
-    public function mod(): Response
+    public function show()
     {
-        return $this->html();
+        
     }
 
-    public function create(): Response {
-        return $this->html();
-    }
-
-    public function edit(): Response
+    public function delete()
     {
-        return $this->html();
+        
     }
 
-    public function delete(): Response
+    public function edit()
     {
-        return $this->html();
+        
     }
 
-    public function save()
+    public function update()
+    {
+        
+    }
+
+    public function store()
     {
 
     }

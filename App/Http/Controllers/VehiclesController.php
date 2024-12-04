@@ -1,27 +1,49 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Http\Controllers;
 
-use App\Core\AControllerBase;
-use App\Core\Responses\Response;
+use App\Http\Controllers\Controller;
+use App\Models\Mod;
+use Illuminate\View\View;
 
-class VehiclesController extends AControllerBase
+class VehiclesController extends Controller
 {
 
-    /**
-     * @inheritDoc
-     */
-    public function index(): Response
+    public function index() 
     {
+        $mod = new Mod();
+        $mod->setTable('vehicles');
+        return view("vehicles.vehicles", ['vehicleList' => $mod::all()]);
+
     }
 
-    public function authorize($action)
+    public function create()
     {
-        return true;
+        
     }
 
-    public function vehicles(): Response
+    public function show()
     {
-        return $this->html();
+        
+    }
+
+    public function delete()
+    {
+        
+    }
+
+    public function edit()
+    {
+        
+    }
+
+    public function update()
+    {
+        
+    }
+
+    public function store()
+    {
+
     }
 }
