@@ -69,7 +69,9 @@
 
                     @auth
                     <div class="col-md-1 mt-3">
-                        <button type="button" class="btn btn-create">Create</button>
+                        <a href="{{ route('vehicle.create') }}">
+                            <button type="button" class="btn btn-create">Create</button>
+                        </a>
                     </div>
                     @endauth
                 </div>
@@ -79,37 +81,32 @@
                 </button>
     
                 <div class="row mt-3">
-                    <h1>Available vehicles</h1>
+                    @if (count($vehicles) === 0)
+                        <h1>There are no vehicles available</h1>
+                    @else
+                        <h1>Available vehicles</h1>
+                    @endif
                 </div>
     
                 <div class="row main-content">
-                    <div class="col-xs-12 col-md-6 mt-2">
-                        <div class="card home-card">
-                            <a class="card-block stretched-link text-decoration-none">
-                                <img class="card-img-top" src="/public/images/vehicles_bmw_m4.jpg" alt="Vehicles BMW link picture">
-                                <div class="card-body">
-                                    <h1 class="card-title">BMW M4 GT3</h1>
+                    @if (count($vehicles) > 0)
+                        @for ($i = 0; $i < count($vehicles); $i++)
+                            <div class="col-xs-12 col-md-6 mt-2">
+                                <div class="card home-card">
+                                    <a class="card-block stretched-link text-decoration-none" href="{{ route('vehicle.show', $vehicles[$i]) }}">
+                                        <img class="card-img-top" src="/images/vehicles_oreca_07.png"
+                                             alt="Vehicles oreca 07 link picture">
+                                        <div class="card-body">
+                                            <h1 class="card-title">{{ $vehicles[$i]->name }}</h1>
+                                            <h3 class="card-title"> {{ $vehicles[$i]->author }} </h3>
+                                        </div>
+                                    </a>
                                 </div>
-                            </a>
-                        </div>
-                    </div>
-    
-                    <div class="col-xs-12 col-md-6 mt-2">
-                        <div class="card home-card">
-                            <a class="card-block stretched-link text-decoration-none">
-                                <img class="card-img-top" src="/public/images/vehicles_oreca_07.png"
-                                     alt="Vehicles oreca 07 link picture">
-                                <div class="card-body">
-                                    <h1 class="card-title">Oreca 07 LMP2</h1>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
+                            </div>
+                        @endfor
+                    @endif
                 </div>
             </div>
-    
-            <div class="col-2"></div>
         </div>
-    
     </div>
 </x-app-layout>
