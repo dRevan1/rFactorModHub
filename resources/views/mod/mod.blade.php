@@ -51,6 +51,9 @@
     
                     <div class="col-xs-12 col-md-7 mt-2">
                         <p>
+                            <span class="item-info">Category:</span> {{ $vehicle->category }}
+                        </p>
+                        <p>
                             <span class="item-info">Size:</span> 700 mb
                         </p>
                         <p>
@@ -75,6 +78,9 @@
                                         Delete
                                     </button>
                                 </form>
+                                <a href="{{ route('vehicle.edit', $vehicle) }}">
+                                    <button class="btn btn-create mt-3">Edit</button>
+                                </a>
                             @endif
                             @endauth
                         </p>

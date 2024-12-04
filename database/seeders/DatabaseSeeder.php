@@ -18,13 +18,13 @@ class DatabaseSeeder extends Seeder
         User::factory()->create([
             "name"=> "Gordon Freeman",
             "email"=> "freeman@blackmesa.com",
-            "password"=> Hash::make("blackmesa"),
+            "password"=> bcrypt("blackmesa"),
         ]);
 
         User::factory()->create([
             "name"=> "Darth Revan",
             "email"=> "drevan@sith.com",
-            "password"=> Hash::make("starwars"),
+            "password"=> bcrypt("starwars"),
         ]);
 
         Vehicle::factory()->create([

@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('vehicles', function (Blueprint $table) {
             $table->string('author');
             $table->string('name', 50);
+            $table->binary('thumbnail')->nullable();
+            $table->binary('file');
             $table->string('category');
             $table->string('description')->nullable();
             $table->integer('downloads')->unsigned();

@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Mod;
 use App\Models\Vehicle;
-use Illuminate\View\View;
+use Illuminate\Http\Request;
 
 class VehiclesController extends Controller
 {
@@ -35,18 +34,45 @@ class VehiclesController extends Controller
         return redirect()->route('vehicle.index');
     }
 
-    public function edit()
+    public function edit(Vehicle $vehicle)
     {
-        
+        if ($vehicle->author !== request()->user()->name) {
+            abort(403);
+        }
+
+        return view('mod.edit', ['vehicle'=> $vehicle]);
     }
 
-    public function update()
+    public function update(Request $request, Vehicle $vehicle)
     {
+        if ($vehicle->author !== request()->user()->name) {
+            abort(403);
+        }
+
+        $data = $request->validate([
+            'name' => ['required', 'string'],
+            'description' => ['string'],
+            'category' => ['required', 'string'],
+            'file' => ['required', 'file']
+        ]);
         
+        $vehicle->update($data);
+        return redirect()->route('vehicle.show', $vehicle);
     }
 
-    public function store()
+    public function store(Request $request)
     {
-        
+        $data = $request->validate([
+            'name' => ['required', 'string'],
+            'description' => ['string'],
+            'category' => ['required', 'string'],
+            'file' => ['required', 'file']
+        ]);
+        $data['author'] = request()->user()->name;
+        $data['downloads'] = 0;
+        $data['likes'] = 0;
+
+        $vehicle = Vehicle::create($data);
+        return redirect()->route('vehicle.show', $vehicle);
     }
 }

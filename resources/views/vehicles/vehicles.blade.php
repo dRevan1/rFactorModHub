@@ -52,6 +52,10 @@
                         <input class="form-check-input" type="checkbox" id="check10" name="option10" value="">
                         <label class="form-check-label">F4</label>
                     </div>
+                    <div class="form-check vehicle-category">
+                        <input class="form-check-input" type="checkbox" id="check11" name="option11" value="">
+                        <label class="form-check-label">Other</label>
+                    </div>
                 </div>
             </div>
     
