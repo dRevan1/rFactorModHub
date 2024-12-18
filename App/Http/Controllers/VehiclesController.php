@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Vehicle;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class VehiclesController extends Controller
 {
 
     public function index() 
     {
-        return view("vehicles.vehicles", ['vehicles' => Vehicle::all(), 'index' => 0]);
+        return view("vehicles.vehicles", ['vehicles' => Vehicle::all()]);
     }
 
     public function create()
@@ -62,12 +63,23 @@ class VehiclesController extends Controller
 
     public function store(Request $request)
     {
+        if (!Auth::check()) {
+            abort(403);
+        }
+
         $data = $request->validate([
             'name' => ['required', 'string'],
             'description' => ['string'],
             'category' => ['required', 'string'],
             'file' => ['required', 'file']
         ]);
+
+        //$vehicle = Vehicle::where('name', $data['name'])
+        //->where('author', request()->user()->name)->first();
+        //if ($vehicle) {
+        //    return redirect()->back()->withErrors(['name' => 'You already have a vehicle with this name']);
+        //}
+
         $data['author'] = request()->user()->name;
         $data['downloads'] = 0;
         $data['likes'] = 0;

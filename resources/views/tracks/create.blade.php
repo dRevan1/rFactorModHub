@@ -6,30 +6,13 @@
             <div class="col-sm-9 col-md-7 col-lg-10 mx-auto">
                 <div class="card login-card my-5 p-4">
                     <div class="card-body">
-                        <h1 class="card-title text-center">Create vehicle</h1>
-                        <form method="POST" action="{{ route('vehicle.store') }}" enctype="multipart/form-data">
+                        <h1 class="card-title text-center">Create track</h1>
+                        <form method="POST" action="{{ route('track.store') }}" enctype="multipart/form-data">
                             @csrf
-                            <label for="name" class="login-label fw-bold">Vehicle name:</label>
+                            <label for="name" class="login-label fw-bold">Track name:</label>
                             <input id="name" class="form-control mt-3 mb-3" placeholder="Enter name" type="text" name="name" :value="old('name')" 
                                 required autofocus autocomplete="name"/>
                             <x-input-error :messages="$errors->get('name')" class="mt-2" />
-
-                            <label for="category" class="login-label fw-bold mt-3">Choose category:</label>    
-                            <div class="col-lg-3">
-                                <select class="form-select mt-3 mb-3" id="category" name="category">
-                                    <option value="F1">F1</option>
-                                    <option value="F2">F2</option>
-                                    <option value="F3">F3</option>
-                                    <option value="F4">F4</option>
-                                    <option value="GT2">GT2</option>
-                                    <option value="GT3">GT3</option>
-                                    <option value="GT4">GT4</option>
-                                    <option value="LMP3">LMP3</option>
-                                    <option value="LMP2">LMP2</option>
-                                    <option value="Hypercar">Hypercar</option>
-                                    <option value="Other">Other</option>
-                                </select>
-                            </div>
 
                             <label for="file" class="login-label fw-bold mt-3">Mod file:</label>
                             <input class="form-control mt-3 mb-3" type="file" id="file" name="file" required>
@@ -39,7 +22,7 @@
                             <textarea name="editor" id="description" placeholder="Write a description here" name="description"></textarea>
 
                             <button type="submit" class="btn btn-search mt-3">Create</button>
-                            <a href="{{ route('vehicle.index') }}">
+                            <a href="{{ route('track.index') }}">
                                 <button type="button" class="btn btn-create mt-3">Cancel</button>
                             </a>
                         </form>

@@ -6,7 +6,7 @@
                     <div class="card-body">
                         <h1 class="card-title text-center">Log in</h1>
 
-                        <x-auth-session-status class="mb-4" :status="session('status')" />
+                        <x-auth-session-status class="mb-4" :status="session('status')" /> <!-- Login z Breeze, použité x-text-input -->
 
                         <form method="POST" action="{{ route('login')}}">
                             @csrf

@@ -6,7 +6,7 @@
             <div class="col-sm-9 col-md-7 col-lg-10 mx-auto">
                 <div class="card login-card my-5 p-4">
                     <div class="card-body">
-                        <h1 class="card-title text-center">Edit</h1>
+                        <h1 class="card-title text-center">Edit vehicle</h1>
                         <form method="POST" action="{{ route('vehicle.update', $vehicle) }}" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
@@ -59,4 +59,3 @@
                 });
         </script>
 </x-form-layout>
-

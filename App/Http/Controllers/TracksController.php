@@ -3,47 +3,81 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Mod;
-use Illuminate\View\View;
+use App\Models\Track;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TracksController extends Controller
 {
    
     public function index() 
     {
-        $mod = new Mod();
-        $mod->setTable('tracks');
-        return view("tracks.tracks", ['trackList' => $mod::all()]);
+        return view("tracks.tracks", ['tracks' => Track::all()]);
 
     }
 
     public function create()
     {
-        
+        return view('tracks.create');
     }
 
-    public function show()
+    public function show(Track $track)
     {
-        
+        return view("tracks.track", ['track' => $track]);
     }
 
-    public function delete()
+    public function destroy(Track $track)
     {
-        
+        if ($track->author !== request()->user()->name) {
+            abort(403);
+        }
+        $track->delete();
+
+        return redirect()->route('track.index');
     }
 
-    public function edit()
+    public function edit(Track $track)
     {
-        
+        if ($track->author !== request()->user()->name) {
+            abort(403);
+        }
+
+        return view("tracks.edit", ["track"=> $track]);
     }
 
-    public function update()
+    public function update(Request $request, Track $track)
     {
-        
+        if ($track->author !== request()->user()->name) {
+            abort(403);
+        }
+
+        $data = $request->validate([
+            'name' => ['required', 'string'],
+            'description' => ['string'],
+            'file' => ['required', 'file']
+        ]);
+
+        $track->update($data);
+        return redirect()->route('track.show', $track);
     }
 
-    public function store()
+    public function store(Request $request)
     {
+        if (!Auth::check()) {
+            abort(403);
+        }
+        
+        $data = $request->validate([
+            'name' => ['required', 'string'],
+            'description' => ['string'],
+            'file' => ['required', 'file']
+        ]);
 
+        $data['author'] = $request->user()->name;
+        $data['downloads'] = 0;
+        $data['likes'] = 0;
+
+        $track = Track::create($data);
+        return redirect()->route('track.show', $track);
     }
 }

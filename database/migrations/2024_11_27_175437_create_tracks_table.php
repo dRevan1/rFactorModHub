@@ -12,15 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tracks', function (Blueprint $table) {
-            $table->foreign('login')->references('name')->on('users');
-            $table->string('name', length:50);
-            $table->date('creation_date')->default(now()->format('d-m-Y'));
-            $table->date('update_date');
+            $table->string('author');
+            $table->string('name', 50);
+            $table->binary('thumbnail')->nullable();
+            $table->binary('file');
             $table->string('description')->nullable();
-            $table->integer('downloads')->unsigned()->default(0);
-            $table->integer('likes')->unsigned()->default(0);
+            $table->integer('downloads')->unsigned();
+            $table->integer('likes')->unsigned();
             $table->timestamps();
-            $table->primary(['login', 'name']);
+            
+            $table->primary(['author', 'name']);
         });
     }
 

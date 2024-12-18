@@ -2,12 +2,15 @@
 
 namespace App\Http\Requests\Auth;
 
+use Hash;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
+use App\Models\User;
+use Session;
 
 class LoginRequest extends FormRequest
 {
@@ -27,7 +30,7 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string', 'exists:users,name'],
+            'name' => ['required', 'string'],
             'password' => ['required', 'string'],
         ];
     }
@@ -40,15 +43,17 @@ class LoginRequest extends FormRequest
     public function authenticate(): void
     {
         $this->ensureIsNotRateLimited();
-
-        if (! Auth::attempt($this->only('name', 'password'), $this->boolean('remember'))) {
+        $this->validate($this->rules());
+        $user = User::where('name', $this->input('name'))->first();
+        if ($user && Hash::check($this->input('password'), $user->password)) {
+            Auth::login($user);
+        } 
+        else {
             RateLimiter::hit($this->throttleKey());
-
             throw ValidationException::withMessages([
-                'name' => trans('auth.failed'),
+                'name' => ['Incorrect username or password.'],
             ]);
         }
-
         RateLimiter::clear($this->throttleKey());
     }
 

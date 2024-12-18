@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use MongoDB\Laravel\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Track extends Model
 {
-    //
+    use HasFactory;
+    protected $fillable = ['author', 'name', 'description', 'downloads', 'likes'];
 }

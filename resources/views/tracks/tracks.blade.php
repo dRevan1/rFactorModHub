@@ -16,84 +16,43 @@
                     </div>
                 </div>
     
-                <div class="col mt-3">
+                <div class="col-md-1 mt-3">
                     <button type="button" class="btn btn-search">Submit</button>
                 </div>
+
+                @auth
+                    <div class="col-md-1 mt-3">
+                        <a href="{{ route('track.create') }}">
+                            <button type="button" class="btn btn-create">Create</button>
+                        </a>
+                    </div>
+                @endauth
             </div>
             <div class="row mt-3">
-                <h1>Available tracks</h1>
+                @if (count($tracks) === 0)
+                    <h1>There are no tracks available</h1>
+                @else
+                    <h1>Available tracks</h1>
+                @endif
             </div>
     
             <div class="row">
-                <div class="col-xs-12 col-md-6 mt-4">
-                    <div class="card home-card">
-                        <a class="card-block stretched-link text-decoration-none">
-                            <img class="card-img-top" src="/public/images/tracks_silverstone.jpg" alt="Tracks silverstone link picture">
-                            <div class="card-body">
-                                <h1 class="card-title">Silverstone Circuit</h1>
+                @if (count($tracks) > 0)
+                    @for ($i = 0; $i < count($tracks); $i++)
+                        <div class="col-xs-12 col-md-6 mt-4">
+                            <div class="card home-card">
+                                <a class="card-block stretched-link text-decoration-none" href="{{ route('track.show', $tracks[$i]) }}">
+                                    <img class="card-img-top" src="/images/tracks_spa.jpg"
+                                         alt="Vehicles oreca 07 link picture">
+                                    <div class="card-body">
+                                        <h1 class="card-title">{{ $tracks[$i]->name }}</h1>
+                                        <h3 class="card-title"> {{ $tracks[$i]->author }} </h3>
+                                    </div>
+                                </a>
                             </div>
-                        </a>
-                    </div>
-                </div>
-    
-                <div class="col-xs-12 col-md-6 mt-4">
-                    <div class="card home-card">
-                        <a class="card-block stretched-link text-decoration-none">
-                            <img class="card-img-top" src="/public/images/tracks_spa.jpg" alt="Tracks spa link picture">
-                            <div class="card-body">
-                                <h1 class="card-title">Circuit de Spa-Francorchamps</h1>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-    
-            <div class="row">
-                <div class="col-xs-12 col-md-6 mt-3">
-                    <div class="card home-card">
-                        <a class="card-block stretched-link text-decoration-none">
-                            <img class="card-img-top" src="/public/images/tracks_silverstone.jpg" alt="Tracks silverstone link picture">
-                            <div class="card-body">
-                                <h1 class="card-title">Silverstone Circuit</h1>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-    
-                <div class="col-xs-12 col-md-6 mt-3">
-                    <div class="card home-card">
-                        <a class="card-block stretched-link text-decoration-none">
-                            <img class="card-img-top" src="/public/images/tracks_spa.jpg" alt="Tracks spa link picture">
-                            <div class="card-body">
-                                <h1 class="card-title">Circuit de Spa-Francorchamps</h1>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-    
-            <div class="row">
-                <div class="col-xs-12 col-md-6 mt-3">
-                    <div class="card home-card">
-                        <a class="card-block stretched-link text-decoration-none">
-                            <img class="card-img-top" src="/public/images/tracks_silverstone.jpg" alt="Tracks silverstone link picture">
-                            <div class="card-body">
-                                <h1 class="card-title">Silverstone Circuit</h1>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-    
-                <div class="col-xs-12 col-md-6 mt-3">
-                    <div class="card home-card">
-                        <a class="card-block stretched-link text-decoration-none">
-                            <img class="card-img-top" src="/public/images/tracks_spa.jpg" alt="Tracks spa link picture">
-                            <div class="card-body">
-                                <h1 class="card-title">Circuit de Spa-Francorchamps</h1>
-                            </div>
-                        </a>
-                    </div>
-                </div>
+                        </div>
+                    @endfor
+                @endif
             </div>
         </div>
     </div>
