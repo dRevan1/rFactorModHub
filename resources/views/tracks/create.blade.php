@@ -19,7 +19,7 @@
                             <x-input-error :messages="$errors->get('file')" class="mt-2" />
 
                             <label for="description" class="login-label fw-bold mb-3 mt-3">Description:</label>  
-                            <textarea name="editor" id="description" placeholder="Write a description here" name="description"></textarea>
+                            <textarea name="description" id="description" placeholder="Write a description here" name="description"></textarea>
 
                             <button type="submit" class="btn btn-search mt-3">Create</button>
                             <a href="{{ route('track.index') }}">

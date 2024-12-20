@@ -1,6 +1,6 @@
 <x-app-layout>
     <script>
-        document.getElementById("tracks-nav").classList.add("active");
+        document.getElementById("other-nav").classList.add("active");
     </script>
 
     <div class="container">
@@ -55,31 +55,34 @@
     
                     <div class="col-xs-12 col-md-7 mt-2">
                         <p>
+                            <span class="item-info">Category:</span> {{ $other->category }}
+                        </p>
+                        <p>
                             <span class="item-info">Size:</span> 700 mb
                         </p>
                         <p>
-                            <span class="item-info">Author:</span> {{ $track->author }}
+                            <span class="item-info">Author:</span> {{ $other->author }}
                         </p>
                         <p>
-                            <span class="item-info">Posted:</span> {{ $track->created_at }}
+                            <span class="item-info">Posted:</span> {{ $other->created_at }}
                         </p>
                         <p>
-                            <span class="item-info">Last update:</span> {{ $track->updated_at }}
+                            <span class="item-info">Last update:</span> {{ $other->updated_at }}
                         </p>
                         <p>
                             <button type="button" class="btn btn-download">
                                 Download
                             </button>
                             @auth
-                            @if (request()->user()->name === $track->author)
-                                <form method="POST" action="{{ route('track.destroy', $track) }}">
+                            @if (request()->user()->name === $other->author)
+                                <form method="POST" action="{{ route('others.destroy', $other) }}">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-create">
                                         Delete
                                     </button>
                                 </form>
-                                <a href="{{ route('track.edit', $track) }}">
+                                <a href="{{ route('others.edit', $other) }}">
                                     <button class="btn btn-create mt-3">Edit</button>
                                 </a>
                             @endif
@@ -90,8 +93,8 @@
     
                 <div class="row item-description">
                     <div class="col">
-                        <h1> {{ $track->name }} </h1>
-                        <p> {!! $track->description !!} </p>
+                        <h1> {{ $other->name }} </h1>
+                        <p> {!! $other->description !!} </p>
                     </div>
                 </div>
     

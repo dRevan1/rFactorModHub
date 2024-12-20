@@ -52,10 +52,12 @@ class VehiclesController extends Controller
 
         $data = $request->validate([
             'name' => ['required', 'string'],
-            'description' => ['string'],
-            'category' => ['required', 'string'],
+            'description' => ['string', 'nullable'],
+            'category' => ['required', 'string', 'in:F1,F2,F3,F4,GT2,GT3,GT4,LMP3,LMP2,Hypercar,Other'],
             'file' => ['required', 'file']
         ]);
+        $data['description'] = strip_tags($data['description'], 
+        '<p><a><strong><em><ul><ol><li><img><b><u><i><h1><h2><h3><h4>');
         
         $vehicle->update($data);
         return redirect()->route('vehicle.show', $vehicle);
@@ -69,8 +71,8 @@ class VehiclesController extends Controller
 
         $data = $request->validate([
             'name' => ['required', 'string'],
-            'description' => ['string'],
-            'category' => ['required', 'string'],
+            'description' => ['string', 'nullable'],
+            'category' => ['required', 'string', 'in:F1,F2,F3,F4,GT2,GT3,GT4,LMP3,LMP2,Hypercar,Other'],
             'file' => ['required', 'file']
         ]);
 
@@ -79,7 +81,8 @@ class VehiclesController extends Controller
         //if ($vehicle) {
         //    return redirect()->back()->withErrors(['name' => 'You already have a vehicle with this name']);
         //}
-
+        $data['description'] = strip_tags($data['description'], 
+        '<p><a><strong><em><ul><ol><li><img><b><u><i><h1><h2><h3><h4>');
         $data['author'] = request()->user()->name;
         $data['downloads'] = 0;
         $data['likes'] = 0;

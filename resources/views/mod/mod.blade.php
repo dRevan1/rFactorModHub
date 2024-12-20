@@ -1,4 +1,8 @@
 <x-app-layout>
+    <script>
+        document.getElementById("vehicles-nav").classList.add("active");
+    </script>
+
     <div class="container">
         <div class="row main-content">
             <div class="col">
@@ -90,7 +94,7 @@
                 <div class="row item-description">
                     <div class="col">
                         <h1> {{ $vehicle->name }} </h1>
-                        <p> {{ $vehicle->description }} </p>
+                        <p> {!! $vehicle->description !!} </p>
                     </div>
                 </div>
     

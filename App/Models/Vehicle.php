@@ -9,5 +9,5 @@ class Vehicle extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['author', 'name', 'description', 'downloads', 'likes'];
+    protected $fillable = ['author', 'name', 'category', 'description', 'downloads', 'likes'];
 }

@@ -19,7 +19,7 @@
                     <a class="nav-link" id="setups-nav" href="{{route('setups')}}">Setups</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="other-nav" href="{{route('other')}}">Other</a>
+                    <a class="nav-link" id="other-nav" href="{{route('others.index')}}">Other</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="auth-nav" href="{{route('login')}}">Log in</a>

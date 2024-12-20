@@ -35,7 +35,7 @@
                             <input class="form-control mt-3 mb-3" type="file" id="file" name="file" required value="{{ $vehicle->file }}">
 
                             <label for="description" class="login-label fw-bold mb-3 mt-3">Description:</label>
-                            <textarea name="editor" id="description" placeholder="Write a description here" name="description">{{ $vehicle->description }}</textarea>
+                            <textarea name="description" id="description" placeholder="Write a description here" name="description">{{ $vehicle->description }}</textarea>
 
                             <button type="submit" class="btn btn-search mt-3">Update</button>
                             <a href="{{ route('vehicle.index') }}">

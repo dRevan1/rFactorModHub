@@ -53,9 +53,11 @@ class TracksController extends Controller
 
         $data = $request->validate([
             'name' => ['required', 'string'],
-            'description' => ['string'],
+            'description' => ['string', 'nullable'],
             'file' => ['required', 'file']
         ]);
+        $data['description'] = strip_tags($data['description'], 
+        '<p><a><strong><em><ul><ol><li><img><b><u><i><h1><h2><h3><h4>');
 
         $track->update($data);
         return redirect()->route('track.show', $track);
@@ -69,10 +71,12 @@ class TracksController extends Controller
         
         $data = $request->validate([
             'name' => ['required', 'string'],
-            'description' => ['string'],
+            'description' => ['string', 'nullable'],
             'file' => ['required', 'file']
         ]);
 
+        $data['description'] = strip_tags($data['description'], 
+        '<p><a><strong><em><ul><ol><li><img><b><u><i><h1><h2><h3><h4>');
         $data['author'] = $request->user()->name;
         $data['downloads'] = 0;
         $data['likes'] = 0;

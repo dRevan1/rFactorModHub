@@ -44,7 +44,7 @@
             <div class="row">
                 <div class="col-xs-12 col-md-6 mt-4">
                     <div class="card home-card">
-                        <a class="card-block stretched-link text-decoration-none" href="{{route('other')}}">
+                        <a class="card-block stretched-link text-decoration-none" href="{{route('others.index')}}">
                             <img class="card-img-top" src="/images/home_link_other.jpg" alt="Other link picture">
                             <div class="card-body">
                                 <h1 class="card-title">Other</h1>
