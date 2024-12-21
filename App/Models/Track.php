@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Track extends Model
 {
     use HasFactory;
-    protected $fillable = ['author', 'name', 'description', 'downloads', 'likes'];
+    protected $fillable = ['author', 'name', 'description', 'thumbnail', 'downloads', 'likes'];
 }

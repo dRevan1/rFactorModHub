@@ -70,7 +70,7 @@
                             <div class="col-xs-12 col-md-6 mt-2">
                                 <div class="card home-card">
                                     <a class="card-block stretched-link text-decoration-none" href="{{ route('others.show', $others[$i]) }}">
-                                        <img class="card-img-top" src="/images/home_link_other.jpg"
+                                        <img class="card-img-top" src="{{ asset('storage/' . $others[$i]->thumbnail) }}"
                                              alt="Vehicles oreca 07 link picture">
                                         <div class="card-body">
                                             <h1 class="card-title">{{ $others[$i]->name }}</h1>

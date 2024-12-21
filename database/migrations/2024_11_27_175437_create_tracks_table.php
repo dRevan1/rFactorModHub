@@ -14,8 +14,7 @@ return new class extends Migration
         Schema::create('tracks', function (Blueprint $table) {
             $table->string('author');
             $table->string('name', 50);
-            $table->binary('thumbnail')->nullable();
-            $table->binary('file');
+            $table->string('thumbnail')->nullable();
             $table->string('description')->nullable();
             $table->integer('downloads')->unsigned();
             $table->integer('likes')->unsigned();

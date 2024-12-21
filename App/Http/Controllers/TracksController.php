@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Track;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Storage;
 
 class TracksController extends Controller
 {
@@ -31,6 +32,9 @@ class TracksController extends Controller
         if ($track->author !== request()->user()->name) {
             abort(403);
         }
+        if ($track->thumbnail && Storage::disk('public')->exists($track->thumbnail)) {
+            Storage::disk('public')->delete($track->thumbnail);
+        }
         $track->delete();
 
         return redirect()->route('track.index');
@@ -54,8 +58,17 @@ class TracksController extends Controller
         $data = $request->validate([
             'name' => ['required', 'string'],
             'description' => ['string', 'nullable'],
-            'file' => ['required', 'file']
+            'thumbnail' => ['image', 'nullable', 'mimes:jpg,jpeg,png', 'max:8192']
         ]);
+
+        if ($track->thumbnail != "") {
+            Storage::disk('public')->delete($track->thumbnail);
+        }
+        $path = ($request->file('thumbnail')) 
+                ? $path = $request->file('thumbnail')->store('tracks/thumbnails', 'public')
+                : "";
+
+        $data['thumbnail'] = $path;
         $data['description'] = strip_tags($data['description'], 
         '<p><a><strong><em><ul><ol><li><img><b><u><i><h1><h2><h3><h4>');
 
@@ -72,12 +85,16 @@ class TracksController extends Controller
         $data = $request->validate([
             'name' => ['required', 'string'],
             'description' => ['string', 'nullable'],
-            'file' => ['required', 'file']
+            'thumbnail' => ['image', 'nullable', 'mimes:jpg,jpeg,png', 'max:8192']
         ]);
+        $path = ($request->file('thumbnail')) 
+                ? $path = $request->file('thumbnail')->store('tracks/thumbnails', 'public')
+                : "";    
 
         $data['description'] = strip_tags($data['description'], 
         '<p><a><strong><em><ul><ol><li><img><b><u><i><h1><h2><h3><h4>');
         $data['author'] = $request->user()->name;
+        $data['thumbnail'] = $path;
         $data['downloads'] = 0;
         $data['likes'] = 0;
 

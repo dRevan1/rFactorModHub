@@ -31,12 +31,13 @@
                                 </select>
                             </div>
 
-                            <label for="file" class="login-label fw-bold mt-3">Mod file:</label>
-                            <input class="form-control mt-3 mb-3" type="file" id="file" name="file" required>
-                            <x-input-error :messages="$errors->get('file')" class="mt-2" />
+                            <label for="thumbnail" class="login-label fw-bold mt-3">Thumbnail:</label>
+                            <input class="form-control mt-3 mb-3" type="file" id="thumbnail" name="thumbnail">
+                            <x-input-error :messages="$errors->get('thumbnail')" class="mt-2" />
 
                             <label for="description" class="login-label fw-bold mb-3 mt-3">Description:</label>  
                             <textarea name="description" id="description" placeholder="Write a description here" name="description"></textarea>
+                            <x-input-error :messages="$errors->get('description')" class="mt-2" />
 
                             <button type="submit" class="btn btn-search mt-3">Create</button>
                             <a href="{{ route('vehicle.index') }}">

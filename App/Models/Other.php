@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Other extends Model
 {
     use HasFactory;
-    protected $fillable = ['author', 'name', 'category', 'description', 'downloads', 'likes'];
+    protected $fillable = ['author', 'name', 'category', 'description', 'thumbnail', 'downloads', 'likes'];
 }

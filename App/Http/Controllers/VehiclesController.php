@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Vehicle;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Storage;
 
 class VehiclesController extends Controller
 {
@@ -29,6 +30,9 @@ class VehiclesController extends Controller
     {
         if ($vehicle->author !== request()->user()->name) {
             abort(403);
+        }
+        if ($vehicle->thumbnail && Storage::disk('public')->exists($vehicle->thumbnail)) {
+            Storage::disk('public')->delete($vehicle->thumbnail);
         }
         $vehicle->delete();
 
@@ -54,11 +58,19 @@ class VehiclesController extends Controller
             'name' => ['required', 'string'],
             'description' => ['string', 'nullable'],
             'category' => ['required', 'string', 'in:F1,F2,F3,F4,GT2,GT3,GT4,LMP3,LMP2,Hypercar,Other'],
-            'file' => ['required', 'file']
+            'thumbnail' => ['image', 'nullable', 'mimes:jpg,jpeg,png', 'max:8192']
         ]);
+
+        if ($vehicle->thumbnail != "") {
+            Storage::disk('public')->delete($vehicle->thumbnail);
+        }
+        $path = ($request->file('thumbnail')) 
+                ? $path = $request->file('thumbnail')->store('vehicles/thumbnails', 'public')
+                : "";
+
         $data['description'] = strip_tags($data['description'], 
         '<p><a><strong><em><ul><ol><li><img><b><u><i><h1><h2><h3><h4>');
-        
+        $data['thumbnail'] = $path;
         $vehicle->update($data);
         return redirect()->route('vehicle.show', $vehicle);
     }
@@ -73,21 +85,26 @@ class VehiclesController extends Controller
             'name' => ['required', 'string'],
             'description' => ['string', 'nullable'],
             'category' => ['required', 'string', 'in:F1,F2,F3,F4,GT2,GT3,GT4,LMP3,LMP2,Hypercar,Other'],
-            'file' => ['required', 'file']
+            'thumbnail' => ['image', 'nullable', 'mimes:jpg,jpeg,png', 'max:8192']
         ]);
+        $path = ($request->file('thumbnail')) 
+                ? $path = $request->file('thumbnail')->store('vehicles/thumbnails', 'public')
+                : "";
 
-        //$vehicle = Vehicle::where('name', $data['name'])
-        //->where('author', request()->user()->name)->first();
-        //if ($vehicle) {
-        //    return redirect()->back()->withErrors(['name' => 'You already have a vehicle with this name']);
-        //}
         $data['description'] = strip_tags($data['description'], 
         '<p><a><strong><em><ul><ol><li><img><b><u><i><h1><h2><h3><h4>');
+        $data['thumbnail'] = $path;
         $data['author'] = request()->user()->name;
         $data['downloads'] = 0;
         $data['likes'] = 0;
 
         $vehicle = Vehicle::create($data);
         return redirect()->route('vehicle.show', $vehicle);
+
+        //$vehicle = Vehicle::where('name', $data['name'])
+        //->where('author', request()->user()->name)->first();
+        //if ($vehicle) {
+        //    return redirect()->back()->withErrors(['name' => 'You already have a vehicle with this name']);
+        //}
     }
 }
