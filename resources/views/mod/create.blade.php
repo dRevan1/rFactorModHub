@@ -1,5 +1,6 @@
 <x-form-layout>
     <script src="https://cdn.ckeditor.com/ckeditor5/39.0.0/classic/ckeditor.js"></script>
+    <script src="{{ asset('js/mod_form.js') }}"></script>
 
     <div class="container">
         <div class="row">
@@ -30,7 +31,10 @@
                                     <option value="Other">Other</option>
                                 </select>
                             </div>
-
+                            
+                            <div class="row">
+                                <img src="/images/car_thumbnail.jpg" class="mod-thumbnail" alt="Thumbnail showcase">
+                            </div>
                             <label for="thumbnail" class="login-label fw-bold mt-3">Thumbnail:</label>
                             <input class="form-control mt-3 mb-3" type="file" id="thumbnail" name="thumbnail">
                             <x-input-error :messages="$errors->get('thumbnail')" class="mt-2" />

@@ -42,7 +42,7 @@
                         <div class="col-xs-12 col-md-6 mt-4">
                             <div class="card home-card">
                                 <a class="card-block stretched-link text-decoration-none" href="{{ route('track.show', $tracks[$i]) }}">
-                                    <img class="card-img-top" src="{{ asset('storage/' . $tracks[$i]->thumbnail) }}"
+                                    <img class="card-img-top" src="{{ asset($tracks[$i]->thumbnail) }}"
                                          alt="Vehicles oreca 07 link picture">
                                     <div class="card-body">
                                         <h1 class="card-title">{{ $tracks[$i]->name }}</h1>

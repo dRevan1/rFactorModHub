@@ -36,8 +36,8 @@ class OtherController extends Controller
             'thumbnail' => ['image', 'nullable', 'mimes:jpg,jpeg,png', 'max:8192']
         ]);
         $path = ($request->file('thumbnail')) 
-                ? $path = $request->file('thumbnail')->store('others/thumbnails', 'public')
-                : "";
+                ? $path = 'storage/' . $request->file('thumbnail')->store('others/thumbnails', 'public')
+                : "images/others_thumbnail.png";
 
         $data['description'] = strip_tags($data['description'], 
         '<p><a><strong><em><ul><ol><li><img><b><u><i><h1><h2><h3><h4>');
@@ -79,12 +79,13 @@ class OtherController extends Controller
             'category' => ['required', 'string', 'in:Skins,Sounds,HUD,Other'],
             'thumbnail' => ['image', 'nullable', 'mimes:jpg,jpeg,png', 'max:8192']
         ]);
-        if ($other->thumbnail != "") {
-            Storage::disk('public')->delete($other->thumbnail);
+        if ($other->thumbnail != "images/others_thumbnail.png") {
+            $relativePath = str_replace('storage/', '', $other->thumbnail);
+            Storage::disk('public')->delete($relativePath);
         }
         $path = ($request->file('thumbnail')) 
-                ? $path = $request->file('thumbnail')->store('others/thumbnails', 'public')
-                : "";
+                ? $path = 'storage/' . $request->file('thumbnail')->store('others/thumbnails', 'public')
+                : "images/others_thumbnail.png";
 
         $data['description'] = strip_tags($data['description'], 
         '<p><a><strong><em><ul><ol><li><img><b><u><i><h1><h2><h3><h4>');
@@ -100,8 +101,9 @@ class OtherController extends Controller
         if ($other->author !== request()->user()->name) {
             abort(403);
         }
-        if ($other->thumbnail && Storage::disk('public')->exists($other->thumbnail)) {
-            Storage::disk('public')->delete($other->thumbnail);
+        $relativePath = str_replace('storage/', '', $other->thumbnail);
+        if (Storage::disk('public')->exists($relativePath)) {
+            Storage::disk('public')->delete($relativePath);
         }
         $other->delete();
         return redirect()->route('others.index');

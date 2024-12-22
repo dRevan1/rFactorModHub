@@ -32,8 +32,9 @@ class TracksController extends Controller
         if ($track->author !== request()->user()->name) {
             abort(403);
         }
-        if ($track->thumbnail && Storage::disk('public')->exists($track->thumbnail)) {
-            Storage::disk('public')->delete($track->thumbnail);
+        $relativePath = str_replace('storage/', '', $track->thumbnail);
+        if (Storage::disk('public')->exists($relativePath)) {
+            Storage::disk('public')->delete($relativePath);
         }
         $track->delete();
 
@@ -61,12 +62,13 @@ class TracksController extends Controller
             'thumbnail' => ['image', 'nullable', 'mimes:jpg,jpeg,png', 'max:8192']
         ]);
 
-        if ($track->thumbnail != "") {
-            Storage::disk('public')->delete($track->thumbnail);
+        if ($track->thumbnail != "images/track_thumbnail.jpg") {
+            $relativePath = str_replace('storage/', '', $track->thumbnail);
+            Storage::disk('public')->delete($relativePath);
         }
         $path = ($request->file('thumbnail')) 
-                ? $path = $request->file('thumbnail')->store('tracks/thumbnails', 'public')
-                : "";
+                ? $path = 'storage/' . $request->file('thumbnail')->store('tracks/thumbnails', 'public')
+                : "images/track_thumbnail.jpg";
 
         $data['thumbnail'] = $path;
         $data['description'] = strip_tags($data['description'], 
@@ -88,8 +90,8 @@ class TracksController extends Controller
             'thumbnail' => ['image', 'nullable', 'mimes:jpg,jpeg,png', 'max:8192']
         ]);
         $path = ($request->file('thumbnail')) 
-                ? $path = $request->file('thumbnail')->store('tracks/thumbnails', 'public')
-                : "";    
+                ? $path = 'storage/' . $request->file('thumbnail')->store('tracks/thumbnails', 'public')
+                : "images/track_thumbnail.jpg";    
 
         $data['description'] = strip_tags($data['description'], 
         '<p><a><strong><em><ul><ol><li><img><b><u><i><h1><h2><h3><h4>');

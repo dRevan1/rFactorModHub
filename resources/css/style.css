@@ -170,3 +170,15 @@ footer {
 .item-comments {
     margin-top: 4vh;
 }
+
+.mod-thumbnail {
+    max-width: max-content;
+    max-height: max-content;
+}
+@media screen and (min-width: 992px) {
+    img.mod-thumbnail {
+        max-width: 50%;
+        max-height: 50%;
+    }
+    
+}

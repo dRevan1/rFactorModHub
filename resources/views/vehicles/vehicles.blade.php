@@ -98,7 +98,7 @@
                             <div class="col-xs-12 col-md-6 mt-2">
                                 <div class="card home-card">
                                     <a class="card-block stretched-link text-decoration-none" href="{{ route('vehicle.show', $vehicles[$i]) }}">
-                                        <img class="card-img-top" src="{{ asset('storage/' . $vehicles[$i]->thumbnail) }}"
+                                        <img class="card-img-top" src="{{ asset($vehicles[$i]->thumbnail) }}"
                                              alt="Vehicle thumbnail">
                                         <div class="card-body">
                                             <h1 class="card-title">{{ $vehicles[$i]->name }}</h1>

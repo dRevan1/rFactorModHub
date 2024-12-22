@@ -31,8 +31,9 @@ class VehiclesController extends Controller
         if ($vehicle->author !== request()->user()->name) {
             abort(403);
         }
-        if ($vehicle->thumbnail && Storage::disk('public')->exists($vehicle->thumbnail)) {
-            Storage::disk('public')->delete($vehicle->thumbnail);
+        $relativePath = str_replace('storage/', '', $vehicle->thumbnail);
+        if (Storage::disk('public')->exists($relativePath)) {
+            Storage::disk('public')->delete($relativePath);
         }
         $vehicle->delete();
 
@@ -61,12 +62,13 @@ class VehiclesController extends Controller
             'thumbnail' => ['image', 'nullable', 'mimes:jpg,jpeg,png', 'max:8192']
         ]);
 
-        if ($vehicle->thumbnail != "") {
-            Storage::disk('public')->delete($vehicle->thumbnail);
+        if ($vehicle->thumbnail != "images/car_thumbnail.jpg") {
+            $relativePath = str_replace('storage/', '', $vehicle->thumbnail);
+            Storage::disk('public')->delete($relativePath);
         }
         $path = ($request->file('thumbnail')) 
-                ? $path = $request->file('thumbnail')->store('vehicles/thumbnails', 'public')
-                : "";
+                ? $path = 'storage/' . $request->file('thumbnail')->store('vehicles/thumbnails', 'public')
+                : "images/car_thumbnail.jpg";
 
         $data['description'] = strip_tags($data['description'], 
         '<p><a><strong><em><ul><ol><li><img><b><u><i><h1><h2><h3><h4>');
@@ -88,8 +90,8 @@ class VehiclesController extends Controller
             'thumbnail' => ['image', 'nullable', 'mimes:jpg,jpeg,png', 'max:8192']
         ]);
         $path = ($request->file('thumbnail')) 
-                ? $path = $request->file('thumbnail')->store('vehicles/thumbnails', 'public')
-                : "";
+                ? $path = 'storage/' . $request->file('thumbnail')->store('vehicles/thumbnails', 'public')
+                : "images/car_thumbnail.jpg";
 
         $data['description'] = strip_tags($data['description'], 
         '<p><a><strong><em><ul><ol><li><img><b><u><i><h1><h2><h3><h4>');
