@@ -19,7 +19,7 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarCollapsed">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav me-auto ms-2">
                 <li class="nav-item">
                     <a class="nav-link" id="home-nav" href="/">Home</a>
                 </li>
@@ -35,17 +35,37 @@
                 <li class="nav-item">
                     <a class="nav-link" id="other-nav" href="{{route('others.index')}}">Other</a>
                 </li>
-                <li class="nav-item">
-                    @auth
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
-                        <a class="nav-link" href="{{route('logout')}}" onclick="event.preventDefault();
-                        this.closest('form').submit();">Log out</a>
-                    </form>
-                    @else
-                        <a class="nav-link" id="auth-nav" href="{{route('login')}}">Log in</a>
-                    @endauth
-                </li>
+            </ul>
+            <ul class="nav navbar-nav ms-auto">
+                @auth
+                    <li class="nav-item">
+                        <div class="dropdown me-2">
+                            <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">{{ auth()->user()->name }}</button>
+
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" id="auth-nav" href="{{route('login')}}">Profile</a></li>
+                                <li>
+                                    <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <a class="dropdown-item" href="{{route('logout')}}" onclick="event.preventDefault();
+                                    this.closest('form').submit();">Log out</a>
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                @else
+                    <li class="nav-item">
+                        <div class="dropdown me-2">
+                            <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Log in</button>
+
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" id="auth-nav" href="{{route('login')}}">Log in</a></li>
+                                <li><a class="dropdown-item" id="reg-nav" href="{{route('register')}}">Sign up</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                @endauth    
             </ul>
         </div>
     </nav>

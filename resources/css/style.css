@@ -94,11 +94,27 @@ footer {
 
 .nav-link {
     color: white;
+    border-radius: 8px;
     font-weight: bold;
 }
 .nav-link:hover {
     background-color: white;
     color: black;
+}
+
+.dropdown-toggle {
+    background-color: var(--rFactor-orange);
+    color: white;
+    font-weight: bold;
+}
+.dropdown-toggle:hover {
+    background-color: white;
+}
+.dropdown-toggle::after {
+    display: none;
+}
+.dropdown-toggle.show {
+    background-color: white;
 }
 
 .home-card {
