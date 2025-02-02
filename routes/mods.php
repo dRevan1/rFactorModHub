@@ -9,4 +9,4 @@ use Illuminate\Support\Facades\Route;
 Route::resource("track", TracksController::class);
 Route::resource("vehicle", VehiclesController::class);
 Route::resource("others", OtherController::class);
-Route::resource("mods", ModsController::class);
+Route::resource("mod", ModsController::class);

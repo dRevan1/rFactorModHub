@@ -24,16 +24,16 @@
                     <a class="nav-link" id="home-nav" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="tracks-nav" href="{{ route('track.index') }}">Tracks</a>
+                    <a class="nav-link" id="tracks-nav" href="{{ route('mod.index', ['mod_type' => 'track']) }}">Tracks</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="vehicles-nav" href="{{route('vehicle.index')}}">Vehicles</a>
+                    <a class="nav-link" id="vehicles-nav" href="{{route('mod.index', ['mod_type' => 'vehicle'])}}">Vehicles</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="setups-nav" href="{{route('setups')}}">Setups</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="other-nav" href="{{route('others.index')}}">Other</a>
+                    <a class="nav-link" id="other-nav" href="{{route('mod.index', ['mod_type' => 'other'])}}">Other</a>
                 </li>
             </ul>
             <ul class="nav navbar-nav ms-auto">

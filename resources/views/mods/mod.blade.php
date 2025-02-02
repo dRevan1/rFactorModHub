@@ -55,34 +55,34 @@
     
                     <div class="col-xs-12 col-md-7 mt-2">
                         <p>
-                            <span class="item-info">Category:</span> {{ $vehicle->category }}
+                            <span class="item-info">Category:</span> {{ $mod->category }}
                         </p>
                         <p>
                             <span class="item-info">Size:</span> 700 mb
                         </p>
                         <p>
-                            <span class="item-info">Author:</span> {{ $vehicle->author }}
+                            <span class="item-info">Author:</span> {{ $mod->author }}
                         </p>
                         <p>
-                            <span class="item-info">Posted:</span> {{ $vehicle->created_at }}
+                            <span class="item-info">Posted:</span> {{ $mod->created_at }}
                         </p>
                         <p>
-                            <span class="item-info">Last update:</span> {{ $vehicle->updated_at }}
+                            <span class="item-info">Last update:</span> {{ $mod->updated_at }}
                         </p>
                         <p>
                             <button type="button" class="btn btn-download">
                                 Download
                             </button>
                             @auth
-                            @if (request()->user()->name === $vehicle->author)
-                                <form method="POST" action="{{ route('vehicle.destroy', $vehicle) }}">
+                            @if (request()->user()->name === $mod->author)
+                                <form method="POST" action="{{ route('mod.destroy', $mod) }}">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-create">
                                         Delete
                                     </button>
                                 </form>
-                                <a href="{{ route('vehicle.edit', $vehicle) }}">
+                                <a href="{{ route('mod.edit', $mod) }}">
                                     <button class="btn btn-create mt-3">Edit</button>
                                 </a>
                             @endif
@@ -93,8 +93,8 @@
     
                 <div class="row item-description">
                     <div class="col">
-                        <h1> {{ $vehicle->name }} </h1>
-                        <p> {!! $vehicle->description !!} </p>
+                        <h1> {{ $mod->name }} </h1>
+                        <p> {!! $mod->description !!} </p>
                     </div>
                 </div>
     

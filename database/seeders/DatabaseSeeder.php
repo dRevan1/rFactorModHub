@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
 use App\Models\User;
-use App\Models\Vehicle;
 use App\Models\Track;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Mod;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -27,11 +27,12 @@ class DatabaseSeeder extends Seeder
             "password"=> bcrypt("starwars"),
         ]);
 
-        Vehicle::factory()->create([
+        Mod::factory()->create([
             "name"=> "Oreca 07 LMP2",
             "author"=> "Gordon Freeman",
             "category"=> "LMP2",
             "thumbnail"=> "images/car_thumbnail.jpg",
+            "type" => "vehicle",
             "description"=> "The Oreca 07 is a Le Mans Prototype built by French manufacturer Oreca to meet the 2017 FIA and
                         ACO LMP2 regulations.
                         It made its official race debut in the opening round of the 2017 IMSA WeatherTech SportsCar
@@ -44,11 +45,12 @@ class DatabaseSeeder extends Seeder
                         only two LMP2 entries have not been an Oreca 07.",
         ]);
 
-        Vehicle::factory()->create([
+        Mod::factory()->create([
             "name"=> "Oreca 07 LMP2",
             "author"=> "Darth Revan",
             "category"=> "LMP2",
             "thumbnail"=> "images/car_thumbnail.jpg",
+            "type" => "vehicle",
             "description"=> "The Oreca 07 is a Le Mans Prototype built by French manufacturer Oreca to meet the 2017 FIA and
                         ACO LMP2 regulations.
                         It made its official race debut in the opening round of the 2017 IMSA WeatherTech SportsCar
@@ -61,11 +63,12 @@ class DatabaseSeeder extends Seeder
                         only two LMP2 entries have not been an Oreca 07.",
         ]);
 
-        Vehicle::factory()->create([
+        Mod::factory()->create([
             "name"=> "Oreca 07",
             "author"=> "Darth Revan",
             "category"=> "LMP2",
             "thumbnail"=> "images/car_thumbnail.jpg",
+            "type" => "vehicle",
             "description"=> "The Oreca 07 is a Le Mans Prototype built by French manufacturer Oreca to meet the 2017 FIA and
                         ACO LMP2 regulations.
                         It made its official race debut in the opening round of the 2017 IMSA WeatherTech SportsCar
@@ -78,10 +81,11 @@ class DatabaseSeeder extends Seeder
                         only two LMP2 entries have not been an Oreca 07.",
         ]);
 
-        Track::factory()->create([
+        Mod::factory()->create([
             "name"=> "Circuit de Spa-Francorchamps",
             "author"=> "Gordon Freeman",
             "thumbnail"=> "images/track_thumbnail.jpg",
+            "type"=> "track",
             "description"=> "The Circuit de Spa-Francorchamps, informally referred to as Spa, is a 7.004 km (4.352 mi) motor-racing
                         circuit located in Francorchamps, Stavelot, Wallonia, Belgium,
                         about 8 km (5.0 mi) southeast of Spa. It is the current venue of the Formula One Belgian Grand Prix, hosting
@@ -95,10 +99,11 @@ class DatabaseSeeder extends Seeder
                         to a 6.947 km (4.317 mi) permanent circuit due to safety concerns with the old circuit."
         ]);
 
-        Track::factory()->create([
+        Mod::factory()->create([
             "name"=> "Silverstone Circuit",
             "author"=> "Gordon Freeman",
             "thumbnail"=> "images/track_thumbnail.jpg",
+            "type"=> "track",
             "description"=> "Silverstone Circuit is a motor racing circuit in England, near the Northamptonshire villages of Silverstone
                         and Whittlebury. It is the home of the British Grand Prix,
                         which it first hosted as the 1948 British Grand Prix. The 1950 British Grand Prix at Silverstone was the
@@ -108,18 +113,34 @@ class DatabaseSeeder extends Seeder
                         British round of the MotoGP series."
         ]);
 
-        Track::factory()->create([
+        Mod::factory()->create([
             "name"=> "Circuit de Spa-Francorchamps",
             "author"=> "Darth Revan",
             "thumbnail"=> "images/track_thumbnail.jpg",
+            "type"=> "track",
             "description"=> "TESTING TESTING"
         ]);
 
-        Track::factory()->create([
+        Mod::factory()->create([
             "name"=> "Silverstone Circuit",
             "author"=> "Darth Revan",
             "thumbnail"=> "images/track_thumbnail.jpg",
+            "type"=> "track",
             "description"=> "LOREM IPSUM IDK NANANANANANANANNANANANAN"
         ]);
+
+        $categories_vehicle = ["GT4", "GT3", "GT2", "LMP3", "LMP2", "Hypercar", "F1", "F2", "F3", "F4", "Other"];
+        $categories_other = ["Skins", "HUD", "Sounds", "Other"];
+
+        foreach($categories_vehicle as $category) {
+            Category::factory()->create([
+                "name"=> $category
+            ]);    
+        }
+        foreach($categories_other as $category_other) {
+            Category::factory()->custom_type("other")->create([
+                "name"=> $category_other
+            ]);    
+        }
     }
 }

@@ -7,25 +7,30 @@ use App\Models\Mod;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Storage;
 
 class ModsController extends Controller
 {
     
-    public function index(string $mod_type)
+    public function index(Request $request)
     {
+        $mod_type = $request->query("mod_type");
         if ($mod_type == "vehicle" || $mod_type == "track" || $mod_type == "other") {
-            return view("mods.mods", ['mods' => Mod::all()]);
-        } else {
-
+            $title = ucfirst($mod_type) . "s";
+            $categories = Category::where('mod_type', $mod_type)->pluck('name');
+            return view("mods.mods", ['mods' => Mod::where('type', $mod_type)->get(),
+                                                  'categories' => $categories, 
+                                                  'title' => $title,
+                                                  'mod_type' => $mod_type]);
         }
     }
 
-    public function create(string $mod_type)
+    public function create(Request $request)
     {
+        $mod_type = $request->query("mod_type");
         if ($mod_type == "vehicle" || $mod_type == "track" || $mod_type == "other") {
-            return view("mods.create", ['categories' => Category::all(), 'mod_type' => $mod_type]);
-        } else {
-
+            $categories = Category::where('mod_type', $mod_type)->pluck('name');
+            return view("mods.create", ['categories' => $categories, 'mod_type' => $mod_type]);
         }
     }
 
@@ -38,12 +43,14 @@ class ModsController extends Controller
         $data = $request->validate([
             'name' => ['required', 'string'],
             'description' => ['string', 'nullable'],
+            'type' => ['string', 'required', 'in:vehicle,track,other'],
             'category' => ['required', 'string', 'in:F1,F2,F3,F4,GT2,GT3,GT4,LMP3,LMP2,Hypercar,Other'],
             'thumbnail' => ['image', 'nullable', 'mimes:jpg,jpeg,png', 'max:8192']
         ]);
+        $thumbnail = $this->get_default_thumbnail($data['type']);
         $path = ($request->file('thumbnail')) 
                 ? $path = 'storage/' . $request->file('thumbnail')->store('mods/thumbnails', 'public')
-                : "images/car_thumbnail.jpg";
+                : $thumbnail;
 
         $data['description'] = strip_tags($data['description'], 
         '<p><a><strong><em><ul><ol><li><img><b><u><i><h1><h2><h3><h4>');
@@ -61,27 +68,67 @@ class ModsController extends Controller
         return view("mods.mod", ['mod' => $mod]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Mod $mod)
     {
-        //
+        if ($mod->author !== request()->user()->name) {
+            abort(403);
+        }
+        $categories = Category::where('mod_type', $mod['type'])->pluck('name');
+        return view("mods.edit", ['categories' => $categories, 'mod' => $mod]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Mod $mod)
     {
-        //
+        if ($mod->author !== request()->user()->name) {
+            abort(403);
+        }
+
+        $data = $request->validate([
+            'name' => ['required', 'string'],
+            'description' => ['string', 'nullable'],
+            'type' => ['string', 'required', 'in:vehicle,track,other'],
+            'category' => ['required', 'string', 'in:F1,F2,F3,F4,GT2,GT3,GT4,LMP3,LMP2,Hypercar,Other'],
+            'thumbnail' => ['image', 'nullable', 'mimes:jpg,jpeg,png', 'max:8192']
+        ]);
+
+        $thumbnail = $this->get_default_thumbnail($mod->type);
+        if ($mod->thumbnail != $thumbnail) {
+            $relativePath = str_replace('storage/', '', $mod->thumbnail);
+            Storage::disk('public')->delete($relativePath);
+        }
+        $path = ($request->file('thumbnail')) 
+                ? $path = 'storage/' . $request->file('thumbnail')->store('mods/thumbnails', 'public')
+                : $thumbnail;
+
+        $data['description'] = strip_tags($data['description'], 
+        '<p><a><strong><em><ul><ol><li><img><b><u><i><h1><h2><h3><h4>');
+        $data['thumbnail'] = $path;
+        $mod->update($data);
+        return redirect()->route('mod.show', $mod);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Mod $mod)
     {
-        //
+        $mod_type = $mod['type'];
+        if ($mod->author !== request()->user()->name) {
+            abort(403);
+        }
+        $relativePath = str_replace('storage/', '', $mod->thumbnail);
+        if (Storage::disk('public')->exists($relativePath)) {
+            Storage::disk('public')->delete($relativePath);
+        }
+        $mod->delete();
+
+        return redirect()->route('mod.index', ['mod_type' => $mod_type]);
+    }
+
+    private function get_default_thumbnail(string $mod_type) {
+        if ($mod_type === "vehicle") {
+            return "images/car_thumbnail.jpg";
+        } else if ($mod_type === "track") {
+            return "images/track_thumbnail.jpg";
+        } else {
+            return "images/others_thumbnail.png";
+        }
     }
 }

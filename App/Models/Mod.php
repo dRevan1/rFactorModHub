@@ -9,5 +9,5 @@ class Mod extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['author', 'name', 'category', 'description', 'thumbnail', 'downloads', 'likes'];
+    protected $fillable = ['author', 'type', 'name', 'category', 'description', 'thumbnail', 'downloads', 'likes'];
 }
