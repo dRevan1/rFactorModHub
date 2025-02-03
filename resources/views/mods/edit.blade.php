@@ -16,9 +16,10 @@
                                 required autofocus autocomplete="name"/>
                             <x-input-error :messages="$errors->get('name')" class="mt-2" />
 
-                            <label for="category" class="login-label fw-bold mt-3">Choose category:</label>    
-                            <div class="col-lg-3">
-                                <select class="form-select mt-3 mb-3" id="category" name="category" required>
+                            @if (count($categories) > 0)
+                                <label for="category" class="login-label fw-bold mt-3">Choose category:</label>    
+                                <div class="col-lg-3">
+                                    <select class="form-select mt-3 mb-3" id="category" name="category" required>
                                     @foreach ($categories as $category)
                                         @if ($category === $mod->category)
                                             <option value="{{ $category }}" selected>{{ $category }}</option>
@@ -26,8 +27,9 @@
                                         @endif
                                         <option value="{{ $category }}">{{ $category }}</option>
                                     @endforeach
-                                </select>
-                            </div>
+                                    </select>
+                                </div>
+                            @endif
 
                             <div class="row">
                                 <img src="{{ asset($mod->thumbnail) }}" class="mod-thumbnail" alt="Thumbnail showcase">

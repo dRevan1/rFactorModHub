@@ -25,6 +25,14 @@ body {
     opacity: 0.5;
 }
 
+.nav-tabs {
+    border-bottom: 1px solid black;
+}
+
+.spinner-border {
+    display: none;
+}
+
 .main-content {
     min-height: 85vh;
     margin-top: 4vh;
@@ -100,6 +108,15 @@ footer {
 .nav-link:hover {
     background-color: white;
     color: black;
+}
+
+.profile-tab {
+    color: black;
+    border-radius: 8px;
+    font-weight: bold;
+}
+.profile-tab:hover {
+    background-color: white;
 }
 
 .dropdown-toggle {

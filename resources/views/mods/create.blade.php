@@ -15,14 +15,19 @@
                                 required autofocus autocomplete="name"/>
                             <x-input-error :messages="$errors->get('name')" class="mt-2" />
 
-                            <label for="category" class="login-label fw-bold mt-3">Choose category:</label>    
-                            <div class="col-lg-3">
-                                <select class="form-select mt-3 mb-3" id="category" name="category">
-                                    @for ($i = 0; $i < count($categories); $i++)
-                                        <option value="{{ $categories[$i] }}">{{ $categories[$i] }}</option>
-                                    @endfor
-                                </select>
-                            </div>
+                            @if (count($categories) > 0)
+                                <label for="category" class="login-label fw-bold mt-3">Choose category:</label>    
+                                <div class="col-lg-3">
+                                    <select class="form-select mt-3 mb-3" id="category" name="category">
+                                        @foreach ($categories as $category)
+                                            <option value="{{ $category }}">{{ $category }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            @else
+                                <input id="category" class="form-control" type="hidden" name="category" value="default" required/>
+                                <x-input-error :messages="$errors->get('category')" class="mt-2" />
+                            @endif
                             
                             <div class="row">
                                 <img src="/images/car_thumbnail.jpg" class="mod-thumbnail" alt="Thumbnail showcase">
