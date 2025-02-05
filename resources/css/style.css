@@ -119,6 +119,15 @@ footer {
     background-color: white;
 }
 
+.profile-mod-link {
+    color: black;
+    transition: 0.4s;
+}
+.profile-mod-link:hover {
+    background-color: lightgray;
+    border-radius: 8px;
+}
+
 .dropdown-toggle {
     background-color: var(--rFactor-orange);
     color: white;

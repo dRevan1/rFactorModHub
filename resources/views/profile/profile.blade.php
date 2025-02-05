@@ -20,6 +20,19 @@
 </div>
 
 <div class="container mt-4">
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <button class="nav-link collection-tab active" data-type="collection">Collections</button>
+        </li>
+    </ul>
+
+    <div class="collections mt-3 mb-5">
+        <div class="spinner-border"></div>
+        <strong role="status">Loading collections...</strong>
+    </div>
+</div>
+
+<div class="container mt-4">
     <ul class="nav nav-tabs" id="profileTabs">
         <li class="nav-item">
             <button class="nav-link profile-tab active" data-type="track">Tracks</button>
@@ -33,9 +46,6 @@
         <li class="nav-item">
             <button class="nav-link profile-tab" data-type="setup">Setups</button>
         </li>
-        <li class="nav-item">
-            <button class="nav-link profile-tab" data-type="collection">Collections</button>
-        </li>
     </ul>
 
     <div class="mods mt-3">
@@ -47,6 +57,33 @@
 
 <script>
         $(document).ready(function () {
+            function loadCollections (username) {
+                $.ajax({
+                    url: '/collections/' + username,
+                    type: 'GET',
+                    beforeSend: function () {
+                        $('.spinner-border').show();
+                    },
+                    success: function (response) {
+                        $('.collections').html(response.collections_list);
+                    },
+                    error: function () {
+                        $('.collections').html('<h1>Error while loading collections list.</h1>');
+                    }
+                });
+            }
+            loadCollections('{{ $user->name }}');
+
+            $('.collection-tab').click(function (e) {
+                e.preventDefault(); //aby nebol refresh
+                loadCollections('{{ $user->name }}');
+            });
+        });
+</script>
+
+
+<script>
+        $(document).ready(function () {
             function loadMods (username, type) {
                 $.ajax({
                     url: '/mods/' + username + '/' + type,
@@ -54,31 +91,21 @@
                     beforeSend: function () {
                         $('.spinner-border').show();
                     },
-                    success: function (data) {
-                        console.log(data);
-                        let html = '<ul>';
-                        if (data.length > 0) {
-                            data.forEach(mod => {
-                                html += `<li>${mod.name}</li>`
-                            });
-                        } else {
-                            html += '<li>This user has no ' + type + 's available.</li>'
-                        }
-                        html += '</ul>';
-                        $('.mods').html(html);
+                    success: function (response) {
+                        $('.mods').html(response.mods_list);
                     },
                     error: function () {
                         $('.mods').html('<h1>Error while loading mod list.</h1>');
                     }
                 });
             }
-            loadMods('Gordon Freeman', 'track');
+            loadMods('{{ $user->name }}', 'track');
 
             $('.profile-tab').click(function (e) {
                 e.preventDefault(); //aby nebol refresh
                 $('.profile-tab').removeClass('active');
                 $(this).addClass('active');
-                loadMods('Gordon Freeman', $(this).data('type'));
+                loadMods('{{ $user->name }}', $(this).data('type'));
             });
         });
 </script>

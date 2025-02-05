@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use App\Models\Mod;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -11,11 +10,16 @@ use Illuminate\Support\Facades\Auth;
 class ModsProfileController extends Controller
 {
 
-    public function get_mods_profile(string $username, string $type) {
+    public function get_mods_profile(Request $request, string $username, string $type) {
 
-        //$mods = Mod::where([['type', '=', $type], ['author', '=', $user]])->get();
-        $mods = Mod::where('type', $type)->where('author', $username)->get();
-        return response()->json($mods);
+        $isAuthor = Auth::check() && $request->user()->name === $username;
+        $mods = Mod::where([['type', '=', $type], ['author', '=', $username]])->get();
+        $mods_list = view('profile.partials.mods-list', 
+                         ['mods' => $mods, 'mod_type' => $type, 'isAuthor' => $isAuthor])->render();
+
+        return response()->json([
+            'mods_list' => $mods_list
+        ]);
     }
 
 }

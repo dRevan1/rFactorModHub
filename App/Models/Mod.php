@@ -10,4 +10,8 @@ class Mod extends Model
     use HasFactory;
 
     protected $fillable = ['author', 'type', 'name', 'category', 'description', 'thumbnail', 'downloads', 'likes'];
+
+    public function collections() {
+        return $this->belongsToMany(Collection::class);
+    }
 }
