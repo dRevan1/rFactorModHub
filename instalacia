@@ -1,0 +1,17 @@
+Inštalácia:
+
+Na projekt bolo použité prostredie Visual Studio Code, ale postup a hlavne jednotlivé časti inštalácie by mali byť identické.
+Projekt využíva Laravel framework a MongoDB databázu.
+1. PHP, napríklad v XAAMP
+2. NodeJS aktuálna verzia
+3. Composer (potrebné napríklad aj pre MongoDB inštaláciu)
+4. Docker
+5. MongoDB, návod: https://www.mongodb.com/docs/drivers/php/laravel-mongodb/v5.x/quick-start/download-and-install/
+
+Keď sa projekt naklonuje, spúšťa sa nasledujúcimi príkazmi v artisan prostredí príkazového riadka:
+npm run dev
+php artisan serve
+
+Pre vytvorenie tabuliek a ich naplnenie testovacími dátami sa použijú príkazy:
+php artisan migrate
+php artisan db:seed
