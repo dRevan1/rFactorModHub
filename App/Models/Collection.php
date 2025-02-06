@@ -11,7 +11,7 @@ class Collection extends Model
 
     protected $fillable = ['author', 'name', 'description', 'thumbnail', 'mod_count'];
 
-    public function collections() {
+    public function mods() {
         return $this->belongsToMany(Mod::class);
     }
 }

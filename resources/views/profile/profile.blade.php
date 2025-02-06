@@ -55,6 +55,7 @@
 
 </div>
 
+
 <script>
         $(document).ready(function () {
             function loadCollections (username) {
@@ -75,8 +76,30 @@
             loadCollections('{{ $user->name }}');
 
             $('.collection-tab').click(function (e) {
-                e.preventDefault(); //aby nebol refresh
+                e.preventDefault();
                 loadCollections('{{ $user->name }}');
+            });
+
+            function loadCollectionMods (username, collection) {
+                $.ajax({
+                    url: '/collections/' + collection + '/' + username,
+                    type: 'GET',
+                    beforeSend: function () {
+                        $('.spinner-border').show();
+                    },
+                    success: function (response) {
+                        $('.collections').html(response.collection_mods);
+                    },
+                    error: function () {
+                        $('.collections').html('<h1>Error while loading collection mods.</h1>');
+                    }
+                });
+            }
+
+            $(document).on('click', '.collection-card', function (e) {
+                e.preventDefault();
+                var collection_name = $(this).find('.collection-name').text();
+                loadCollectionMods ('{{ $user->name }}', collection_name);
             });
         });
 </script>

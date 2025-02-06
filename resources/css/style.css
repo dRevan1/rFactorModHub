@@ -50,6 +50,8 @@ body {
 .btn-search {
     background-color: var(--rFactor-blue);
     color: white;
+    border-color: black;
+    border-width: 2px;
 }
 .btn-search:hover {
     border-color: var(--rFactor-blue);
@@ -60,6 +62,8 @@ body {
 .btn-create {
     background-color: var(--rFactor-orange);
     color: white;
+    border-color: black;
+    border-width: 2px;
 }
 .btn-create:hover {
     border-color: var(--rFactor-orange);
@@ -115,8 +119,12 @@ footer {
     border-radius: 8px;
     font-weight: bold;
 }
-.profile-tab:hover {
+.nav-link.profile-tab:hover {
     background-color: white;
+    border-color: black;
+}
+.nav-link.profile-tab:focus {
+    border-color: black;
 }
 
 .profile-mod-link {
@@ -126,6 +134,25 @@ footer {
 .profile-mod-link:hover {
     background-color: lightgray;
     border-radius: 8px;
+}
+
+.profile-mod-card {
+    border-color: black;
+    border-width: 2px;
+    transition: 0.4s;
+}
+.profile-mod-card:hover {
+    border-color: lightgray;
+}
+
+.collection-card {
+    border-color: black;
+    border-width: 2px;
+    transition: 0.4s;
+    cursor: pointer;
+}
+.collection-card:hover {
+    opacity: 0.2;
 }
 
 .dropdown-toggle {
@@ -176,14 +203,14 @@ footer {
     height: auto;
 }
 
-.modal {
-    overflow: scroll;
-    align-content: center;
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.modal-content {
-    background: none;
-    border: none;
+.modal {
+    overflow: scroll;
 }
 
 .modal-img {

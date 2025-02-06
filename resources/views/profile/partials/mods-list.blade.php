@@ -1,4 +1,3 @@
-
 @if (count($mods) === 0)
     <h4>There are no {{ $mod_type }}s available.</h4>
 @else
@@ -9,9 +8,21 @@
             mods:
         @endif  
     </h4>
+@endif
+
+@if ($isAuthor)
+    <div class="col-md-2 mt-3 mb-2">
+        <a href="{{ route('mod.create', ['mod_type' => $mod_type]) }}">
+            <button type="button" class="btn btn-search">Create mod</button>
+        </a>
+    </div>
+@endif
+
+
+@if (count($mods) > 0)
     @foreach ($mods as $mod)
-    <div class="card position-relative">
-            <div class="row g-0 align-items-center">
+    <div class="card profile-mod-card position-relative mb-1">
+            <div class="row align-items-center">
             <div class="col-md-2">
                 <img class="img-fluid" src="{{ asset($mod->thumbnail) }}"alt="Mod thumbnail">
             </div>

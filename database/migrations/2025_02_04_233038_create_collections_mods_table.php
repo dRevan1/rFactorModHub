@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('collections_mods', function (Blueprint $table) {
             $table->string('author');
             $table->string('collection');
-            $table->stirng('mod');
+            $table->string('mod');
             $table->timestamps();
         });
     }
