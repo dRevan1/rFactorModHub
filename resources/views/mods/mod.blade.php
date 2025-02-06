@@ -1,6 +1,10 @@
 <x-app-layout>
     <script>
-        document.getElementById("vehicles-nav").classList.add("active");
+        let type = "{{ $mod->type }}"
+        type += "s-nav"
+        document.getElementById(type).classList.add("active");
+        let title = document.title;
+        document.title = title.charAt(0).toUpperCase() + title.slice(1);
     </script>
 
     <div class="container">

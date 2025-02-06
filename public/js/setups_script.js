@@ -1,54 +1,5 @@
-<x-app-layout>
-    <head>
-        <title>Setups</title>
-    </head>
-    
-    <script>
-        document.getElementById("setups-nav").classList.add("active");
-    </script>
-    
-    <div class="container">
-        <div class="row main-content">
-            <div class="container mt-3">
-                <h1>List of setups, number of entries: {{ count($setups) }}</h1>
-                <div class="input-group">
-                    <input type="text" id="search" class="form-control search-bar" placeholder="Search...">
-                </div>
-                @auth
-                    <button class="btn btn-search mt-3" id="createSetup">Create setup</button>
-                @endauth
-                <table class="table table-hover setup-table mt-4">
-                    <thead>
-                     <tr>
-                      <th>Name</th>
-                      <th>Vehicle</th>
-                      <th>Track</th>
-                      <th>Author</th>
-                      <th>Likes</th>
-                      <th>Downloads</th>
-                      <th>Actions</th>
-                     </tr>
-                    </thead>
 
-                    <tbody id="setupsTableBody">
-                        
-                    </tbody>
-                </table> 
-                <div id="loadingLabel">
-                    <div class="spinner-border"></div>
-                    <strong role="status" id="loadingText">Loading setups...</strong>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    @include('setups.partials.setup-create-form')
-    <div id="setupEditContainer">
-
-    </div>
-
-    <script>
-        $(document).ready(function () {
+         $(document).ready(function () {
             function loadSetups (search_input) {
                 $.ajax({
                     url: '/setups/search',
@@ -171,5 +122,3 @@
         });
     });
     });
-    </script>
-</x-app-layout>

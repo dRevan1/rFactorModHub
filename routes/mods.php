@@ -20,3 +20,7 @@ Route::delete("/collections/{collection}", [CollectionsController::class, "destr
 
 Route::get("/setups",  [SetupsController::class, "index"])->name('setups');
 Route::get("/setups/search",  [SetupsController::class, "get_setups_table_content"]);
+Route::post("/setups",  [SetupsController::class, "store"]);
+Route::put("/setups/{setup_name}",  [SetupsController::class, "update"]);
+Route::get("/setups/{setup_name}/edit",  [SetupsController::class, "edit"]);
+Route::delete("/setups/{setup_name}",  [SetupsController::class, "destroy"]);

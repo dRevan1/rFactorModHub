@@ -7,11 +7,11 @@
     <td>{{ $setup->likes }}</td>
     <td>{{ $setup->downloads }}</td>
     <td>
-        <button class="btn btn-search"><i class="bi bi-download"></i></button>
+        <button class="btn btn-search download-setup"><i class="bi bi-download"></i></button>
         @auth
         @if (request()->user()->name === $setup->author)
-            <button class="btn btn-search"><i class="bi bi-pencil-square"></i></button>
-            <button class="btn btn-create"><i class="bi bi-trash3"></i></button>
+            <button class="btn btn-search edit-setup" data-name="{{ $setup->name }}"><i class="bi bi-pencil-square"></i></button>
+            <button class="btn btn-create delete-setup" data-name="{{ $setup->name }}"><i class="bi bi-trash3"></i></button>
         @endif
         @endauth
     </td>                      

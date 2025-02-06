@@ -36,4 +36,63 @@ class SetupsController extends Controller
         ]);
     }
 
+    public function store(Request $request) {
+        if (!Auth::check()) {
+            abort(403);
+        }
+
+        $data = $request->validate([
+            'name' => ['required', 'string', 'max:50'],
+            'vehicle' => ['required', 'string'],
+            'track' => ['required', 'string']
+        ]);
+
+        $data['author'] = request()->user()->name;
+        $data['likes'] = 0;
+        $data['downloads'] = 0;
+
+        Setup::create($data);
+        return response()->json([
+            'message' => 'Setup created successfully!',
+        ]);
+    }
+
+    public function edit(string $setup_name)
+    {
+        $setup = Setup::where([
+            ['name', '=', $setup_name],
+            ['author', '=', request()->user()->name]
+        ])->first();
+
+        return view('setups.partials.setup-edit-form', compact('setup'));
+    }
+    
+
+    public function update(Request $request, string $setup_name) {
+        $setup = Setup::where([
+            ['name', '=', $setup_name],
+            ['author', '=', $request->user()->name]
+        ])->first();
+
+        $request->validate([
+            'name' => ['required', 'string', 'max:50'],
+            'vehicle' => ['required', 'string'],
+            'track' => ['required', 'string']
+        ]);
+        $setup->name = $request->input('name');
+        $setup->vehicle = $request->input('vehicle');
+        $setup->track = $request->input('track');
+
+        $setup->save();
+    }
+
+    public function destroy(Request $request, string $setup_name) {
+        $setup = Setup::where([
+            ['name', '=', $setup_name],
+            ['author', '=', $request->user()->name]
+        ])->first();
+
+        $setup->delete();
+    }
+
 }
