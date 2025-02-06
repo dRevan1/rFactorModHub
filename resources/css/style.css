@@ -186,6 +186,10 @@ footer {
     transition: 0.4s;
 }
 
+.setup-table {
+    border-color: black;
+}
+
 .card-title {
     color: black;
 }
@@ -250,4 +254,8 @@ footer {
         max-height: 50%;
     }
     
+}
+
+.search-bar {
+    border-color: var(--rFactor-blue);
 }

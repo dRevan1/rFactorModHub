@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Category;
 use App\Models\User;
-use App\Models\Track;
+use App\Models\Setup;
 use App\Models\Mod;
 use Illuminate\Database\Seeder;
 
@@ -25,6 +25,19 @@ class DatabaseSeeder extends Seeder
             "name"=> "Darth Revan",
             "email"=> "drevan@sith.com",
             "password"=> bcrypt("starwars"),
+        ]);
+
+        Setup::factory()->create([
+            "name"=> "test",
+            "author"=> "Gordon Freeman",
+            "vehicle"=> "test",
+            "track"=> "test",
+        ]);
+        Setup::factory()->create([
+            "name"=> "test",
+            "author"=> "Darth Revan",
+            "vehicle"=> "test",
+            "track"=> "test",
         ]);
 
         Mod::factory()->create([

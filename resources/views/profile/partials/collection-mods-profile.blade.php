@@ -11,19 +11,19 @@
 @endif
 
 @if ($isAuthor)
-    <div class="col-md-2 mt-3 mb-2">
+    <div class="col mt-3 mb-2">
         <a href="#">
             <button type="button" class="btn btn-search">Edit collection</button>
         </a>
     </div>
 
-    <div class="col-md-2 mt-3 mb-2">
-        <a href="#">
+    <div class="col mt-3 mb-2">
+        <a href="{{ route('collections.edit', $collection) }}">
             <button type="button" class="btn btn-search">Update collection mods</button>
         </a>
     </div>
 
-    <div class="col-md-2 mt-3 mb-2">
+    <div class="col mt-3 mb-2">
         <a href="#">
             <button type="button" class="btn btn-create"><i class="bi bi-trash3"></i></button>
         </a>

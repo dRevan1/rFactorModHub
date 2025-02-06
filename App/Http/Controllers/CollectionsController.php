@@ -7,6 +7,7 @@ use App\Models\Mod;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Storage;
 
 class CollectionsController extends Controller
@@ -71,7 +72,13 @@ class CollectionsController extends Controller
 
     public function edit(Collection $collection)
     {
-        
+        if ($collection->author !== request()->user()->name) {
+            abort(403);
+        }
+        $mods_in_collection = $collection->mods;
+
+        return view("profile.collection-edit", ['collection' => $collection, 
+                           'mods' => $mods_in_collection]);
     }
 
     public function update(Request $request, Collection $collection)

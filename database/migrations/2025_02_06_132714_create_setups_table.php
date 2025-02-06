@@ -6,17 +6,16 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
+    
     public function up(): void
     {
-        Schema::create('collections', function (Blueprint $table) {
+        Schema::create('setups', function (Blueprint $table) {
             $table->string('author');
-            $table->string('name', 50);
-            $table->string('thumbnail')->nullable();
-            $table->integer('mod_count');
-            $table->string('description')->nullable();
+            $table->string('name', 30);
+            $table->string('vehicle');
+            $table->string('track');
+            $table->integer('likes');
+            $table->integer('downloads');
             $table->timestamps();
 
             $table->primary(['author','name']);
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('collections');
+        Schema::dropIfExists('setups');
     }
 };

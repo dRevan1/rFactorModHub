@@ -7,10 +7,6 @@ Route::get("/", function () {
     return view('home.index');
 });
 
-Route::get("/setups", function () {
-    return view('setups.setups');
-})->name('setups');
-
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::get('/profile/{user}', [ProfileController::class, 'show'])->name('profile.show');

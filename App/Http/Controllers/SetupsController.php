@@ -1,27 +1,39 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Http\Controllers;
 
-use App\Core\AControllerBase;
-use App\Core\Responses\Response;
+use App\Models\Setup;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class SetupsController extends AControllerBase
+class SetupsController extends Controller
 {
 
-    /**
-     * @inheritDoc
-     */
-    public function index(): Response
-    {
+    public function index() {
+
+        $setups = Setup::all();
+        return view('setups.setups', ['setups' => $setups]);
     }
 
-    public function authorize($action)
-    {
-        return true;
+    public function get_setups_table_content(Request $request) {
+        $search_input = $request->input('search_input');
+
+        $setups = empty($search_input)
+            ? Setup::all()
+            : Setup::where('name', 'LIKE', "%{$search_input}%")
+            ->orWhere([
+                ['author', 'LIKE', "%{$search_input}%"],
+                ['vehicle', 'LIKE', "%{$search_input}%"],
+                ['track', 'LIKE', "%{$search_input}%"]
+            ])->get();
+
+        $setups_table_content = view('setups.partials.setups-table-content', 
+                         ['setups' => $setups])->render();
+
+        return response()->json([
+            'setups_table_content' => $setups_table_content
+        ]);
     }
 
-    public function setups(): Response
-    {
-        return $this->html();
-    }
 }
